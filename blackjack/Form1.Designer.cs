@@ -80,6 +80,7 @@
             this.ゲーム終了ToolStripMenuItem.Name = "ゲーム終了ToolStripMenuItem";
             this.ゲーム終了ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.ゲーム終了ToolStripMenuItem.Text = "ゲーム終了";
+            this.ゲーム終了ToolStripMenuItem.Click += new System.EventHandler(this.GameEndClicked);
             // 
             // ヘルプToolStripMenuItem
             // 

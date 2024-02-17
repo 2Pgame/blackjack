@@ -79,7 +79,10 @@ namespace blackjack
             shuffle.Clear();
         }
 
-
+        private void GameEndClicked(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 
 }
