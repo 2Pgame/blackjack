@@ -24,10 +24,13 @@ namespace blackjack
         private void NewGameClicked(object sender, EventArgs e)
         {
             CardCreate();
+            ShuffleCard.Enabled = true;
+            NewGame.Enabled = false;
         }
         private void ShuffleClicked(object sender, EventArgs e)
         {
             CardShuffle();
+            ShuffleCard.Enabled = false;
         }
 
         private void VersionClicked(object sender, EventArgs e)

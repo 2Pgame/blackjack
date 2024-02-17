@@ -70,6 +70,7 @@
             // 
             // ShuffleCard
             // 
+            this.ShuffleCard.Enabled = false;
             this.ShuffleCard.Name = "ShuffleCard";
             this.ShuffleCard.Size = new System.Drawing.Size(270, 34);
             this.ShuffleCard.Text = "カードをシャッフル";
