@@ -12,6 +12,7 @@ namespace blackjack
         Spade,
         Heart,
         Diamond
+    }
     internal class Card
     {
 
