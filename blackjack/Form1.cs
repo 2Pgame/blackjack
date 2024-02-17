@@ -25,6 +25,15 @@ namespace blackjack
         {
             CardCreate();
         }
+        private void ShuffleClicked(object sender, EventArgs e)
+        {
+            CardShuffle();
+        }
+
+        private void VersionClicked(object sender, EventArgs e)
+        {
+            MessageBox.Show("1.00", "バージョン情報");
+        }
         void CardCreate()
         {
             for (int i = 1; i < 14; i++)
@@ -49,11 +58,28 @@ namespace blackjack
                 Console.WriteLine($"{card.Suit}{card.Number} {card.Id} {card.Point} {card.Address}");
             }
         }
-
-        private void VersionClicked(object sender, EventArgs e)
+        void CardShuffle()
         {
-            MessageBox.Show("1.00", "バージョン情報");
+            for (int i = 51; i >= 0; i--)
+            {
+                Random random = new Random();
+                int num = random.Next(0, i + 1);
+                shuffle.Add(new Card(cards[num].Suit, cards[num].Number, cards[num].Id, cards[num].Point, cards[num].Address));
+                cards.RemoveAt(num);
+            }
+            cards = shuffle;
+            foreach (var cardS in shuffle)
+            {
+                Console.WriteLine($"{cardS.Suit}{cardS.Number} {cardS.Id} {cardS.Point} {cardS.Address}");
+            }
         }
+        void CardClear(List<Card> list, List<Card> shuffle)
+        {
+            list.Clear();
+            shuffle.Clear();
+        }
+
+
     }
 
 }

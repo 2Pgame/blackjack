@@ -31,7 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ゲームToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NewGame = new System.Windows.Forms.ToolStripMenuItem();
-            this.カードをシャッフルToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ShuffleCard = new System.Windows.Forms.ToolStripMenuItem();
             this.ゲーム終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ヘルプToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.version = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,7 +55,7 @@
             // 
             this.ゲームToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.NewGame,
-            this.カードをシャッフルToolStripMenuItem,
+            this.ShuffleCard,
             this.ゲーム終了ToolStripMenuItem});
             this.ゲームToolStripMenuItem.Name = "ゲームToolStripMenuItem";
             this.ゲームToolStripMenuItem.Size = new System.Drawing.Size(68, 29);
@@ -68,11 +68,12 @@
             this.NewGame.Text = "新規作成";
             this.NewGame.Click += new System.EventHandler(this.NewGameClicked);
             // 
-            // カードをシャッフルToolStripMenuItem
+            // ShuffleCard
             // 
-            this.カードをシャッフルToolStripMenuItem.Name = "カードをシャッフルToolStripMenuItem";
-            this.カードをシャッフルToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.カードをシャッフルToolStripMenuItem.Text = "カードをシャッフル";
+            this.ShuffleCard.Name = "ShuffleCard";
+            this.ShuffleCard.Size = new System.Drawing.Size(270, 34);
+            this.ShuffleCard.Text = "カードをシャッフル";
+            this.ShuffleCard.Click += new System.EventHandler(this.ShuffleClicked);
             // 
             // ゲーム終了ToolStripMenuItem
             // 
@@ -91,7 +92,7 @@
             // version
             // 
             this.version.Name = "version";
-            this.version.Size = new System.Drawing.Size(270, 34);
+            this.version.Size = new System.Drawing.Size(180, 34);
             this.version.Text = "バージョン";
             this.version.Click += new System.EventHandler(this.VersionClicked);
             // 
@@ -116,7 +117,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ゲームToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem NewGame;
-        private System.Windows.Forms.ToolStripMenuItem カードをシャッフルToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ShuffleCard;
         private System.Windows.Forms.ToolStripMenuItem ゲーム終了ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ヘルプToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem version;
