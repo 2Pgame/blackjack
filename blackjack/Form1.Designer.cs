@@ -28,13 +28,96 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ゲームToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.新規作成ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.カードをシャッフルToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ゲーム終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ヘルプToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.バージョンToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ゲームToolStripMenuItem,
+            this.ヘルプToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 33);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // ゲームToolStripMenuItem
+            // 
+            this.ゲームToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.新規作成ToolStripMenuItem,
+            this.カードをシャッフルToolStripMenuItem,
+            this.ゲーム終了ToolStripMenuItem});
+            this.ゲームToolStripMenuItem.Name = "ゲームToolStripMenuItem";
+            this.ゲームToolStripMenuItem.Size = new System.Drawing.Size(68, 29);
+            this.ゲームToolStripMenuItem.Text = "ゲーム";
+            // 
+            // 新規作成ToolStripMenuItem
+            // 
+            this.新規作成ToolStripMenuItem.Name = "新規作成ToolStripMenuItem";
+            this.新規作成ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.新規作成ToolStripMenuItem.Text = "新規作成";
+            // 
+            // カードをシャッフルToolStripMenuItem
+            // 
+            this.カードをシャッフルToolStripMenuItem.Name = "カードをシャッフルToolStripMenuItem";
+            this.カードをシャッフルToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.カードをシャッフルToolStripMenuItem.Text = "カードをシャッフル";
+            // 
+            // ゲーム終了ToolStripMenuItem
+            // 
+            this.ゲーム終了ToolStripMenuItem.Name = "ゲーム終了ToolStripMenuItem";
+            this.ゲーム終了ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.ゲーム終了ToolStripMenuItem.Text = "ゲーム終了";
+            // 
+            // ヘルプToolStripMenuItem
+            // 
+            this.ヘルプToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.バージョンToolStripMenuItem});
+            this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
+            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(72, 29);
+            this.ヘルプToolStripMenuItem.Text = "ヘルプ";
+            // 
+            // バージョンToolStripMenuItem
+            // 
+            this.バージョンToolStripMenuItem.Name = "バージョンToolStripMenuItem";
+            this.バージョンToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.バージョンToolStripMenuItem.Text = "バージョン";
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ゲームToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 新規作成ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem カードをシャッフルToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ゲーム終了ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ヘルプToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem バージョンToolStripMenuItem;
     }
 }
 
