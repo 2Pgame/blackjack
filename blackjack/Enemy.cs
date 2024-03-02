@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,7 +35,7 @@ namespace blackjack
 
             for (int i = 0; i < list2.Count; i++)
             {
-                if (SumPointE > 21)
+                if (SumPointE == 22)
                 {
                     if (list2[i].Id == 1)
                     {
@@ -63,76 +64,14 @@ namespace blackjack
 
             SumPointE = 0;
             foreach (Card ene in enemy)
-            { 
+            {
                 SumPointE += ene.Point;
             }
-            Form1.DealerPoint.Text = SumPointE.ToString();
-            while (SumPointE < 17)
+            if (SumPointE == 21)
             {
-                enemy.Add(new Card(shuffle[Form1.sum].Suit, shuffle[Form1.sum].Number, shuffle[Form1.sum].Id, shuffle[Form1.sum].Point, shuffle[Form1.sum].Address));
-                Form1.pictureBoxE[Form1.enemySum].ImageLocation = enemy[Form1.enemySum].Address;
-
-                Form1.sum++;
-                Form1.enemySum++;
-                SumPointE = 0;
-                foreach (var card in enemy)
-                {
-                    SumPointE += card.Point;
-
-                }
-                Form1.DealerPoint.Text = SumPointE.ToString();
-                for (int i = 0; i < enemy.Count; i++)
-                {
-                    if (SumPointE > 21)
-                    {
-                        if (enemy[i].Id == 1)
-                        {
-                            enemy[i].Point = 1;
-                        }
-                        else if (enemy[i].Id == 14)
-                        {
-                            enemy[i].Point = 1;
-                        }
-                        else if (enemy[i].Id == 27)
-                        {
-                            enemy[i].Point = 1;
-                        }
-                        else if (enemy[i].Id == 40)
-                        {
-                            enemy[i].Point = 1;
-                        }
-                    }
-                }
-
-                SumPointE = 0;
-                foreach (var card in enemy)
-                {
-                    SumPointE += card.Point;
-
-                }
-                Console.WriteLine($"現在{SumPointE}です");
-                if (SumPointE <= 21)
-                {
-                    Form1.DealerPoint.Text = SumPointE.ToString();
-                }
-                else
-                {
-                    Form1.DealerPoint.Text = "Burst";
-                }
-            }
-            return SumPointE;
-        }
-
-        public void BJJudge(float sumPoint1, float sumPoint2)
-        {
-
-            if (sumPoint1 >= 22)
-            {
-                Console.WriteLine("プレイヤーの負け");
-            }
-            else if (sumPoint2 >= 22)
-            {
-                Console.WriteLine("プレイヤーの勝ち");
+                Console.WriteLine("ブラックジャック");
+                SumPointE += (float)0.5;
+                Form1.DealerPoint.Text = "Black\nJack";
             }
             else if (sumPoint1 == sumPoint2)
             {
@@ -144,7 +83,175 @@ namespace blackjack
             }
             else if (sumPoint2 > sumPoint1 )
             {
+                Form1.DealerPoint.Text = SumPointE.ToString();
+            }
+
+
+            while (SumPointE < 17)
+            {
+                enemy.Add(new Card(shuffle[Form1.sum].Suit, shuffle[Form1.sum].Number, shuffle[Form1.sum].Id, shuffle[Form1.sum].Point, shuffle[Form1.sum].Address));
+                Form1.pictureBoxE[Form1.enemySum].ImageLocation = enemy[Form1.enemySum].Address;
+                Form1.player2.Play();
+                Form1.sum++;
+                Form1.enemySum++;
+                SumPointE = 0;
+                foreach (var card in enemy)
+                {
+                    SumPointE += card.Point;
+
+                }
+                Form1.DealerPoint.Text = SumPointE.ToString();
+                if (SumPointE > 22)
+                {
+                    foreach (var card in enemy)
+                    {
+                        if (card.Id == 1)
+                        {
+                            card.Point = 1;
+                        }
+                    }
+                }
+                SumPointE = 0;
+                foreach (var card in enemy)
+                {
+                    SumPointE += card.Point;
+                }
+                if (SumPointP > 22)
+                {
+                    foreach (var card in enemy)
+                    {
+                        if (card.Id == 14)
+                        {
+                            card.Point = 1;
+                        }
+                    }
+                }
+                SumPointP = 0;
+                foreach (var card in enemy)
+                {
+                    SumPointE += card.Point;
+                }
+                if (SumPointE > 22)
+                {
+                    foreach (var card in enemy)
+                    {
+                        if (card.Id == 27)
+                        {
+                            card.Point = 1;
+                        }
+                    }
+                }
+                SumPointE = 0;
+                foreach (var card in enemy)
+                {
+                    SumPointE += card.Point;
+                }
+                if (SumPointE > 22)
+                {
+                    foreach (var card in enemy)
+                    {
+                        if (card.Id == 40)
+                        {
+                            card.Point = 1;
+                        }
+                    }
+                }
+
+            }
+
+            SumPointE = 0;
+            foreach (var card in enemy)
+            {
+                SumPointE += card.Point;
+
+            }
+            Console.WriteLine($"現在{SumPointE}です");
+            if (SumPointE <= 21)
+            {
+                Form1.DealerPoint.Text = SumPointE.ToString();
+            }
+            else
+            {
+                Form1.DealerPoint.Text = "Burst";
+            }
+            return SumPointE;
+        }
+
+        public void BJJudge(float sumPoint1, float sumPoint2)
+        {
+
+            if (sumPoint1 >= 22)
+            {
                 Console.WriteLine("プレイヤーの負け");
+                Form1.WinOrLoseP.Visible = true;
+                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Blue;
+                Form1.WinOrLoseP.Text = "負け";
+                Form1.CrownPictureE.Visible = true;
+                Form1.WinOrLoseE.Visible = true;
+                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Red;
+                Form1.WinOrLoseE.Text = "勝ち";
+                Form1.coinlabel.Text = Form1.coin.ToString();
+            }
+            else if (sumPoint2 >= 22)
+            {
+                Console.WriteLine("プレイヤーの勝ち");
+                Form1.CrownPictureP.Visible = true;
+                Form1.WinOrLoseP.Visible = true;
+                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Red;
+                Form1.WinOrLoseP.Text = "勝ち";
+                Form1.WinOrLoseE.Visible = true;
+                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Blue;
+                Form1.WinOrLoseE.Text = "負け";
+                Form1.player.controls.pause();// ポーズ(play()で再開)
+                Form1.coin += Form1.bet * 2;
+                Form1.coinlabel.Text = Form1.coin.ToString();
+
+                SoundPlayer player1 = new SoundPlayer(@"勝ち.wav");
+                player1.Play();
+
+                Form1.Start();
+
+            }
+            else if (sumPoint1 == sumPoint2)
+            {
+                Console.WriteLine("引き分け");
+                Form1.WinOrLoseP.Visible = true;
+                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Purple;
+                Form1.WinOrLoseP.Text = "引き分け";
+                Form1.WinOrLoseE.Visible = true;
+                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Purple;
+                Form1.WinOrLoseE.Text = "引き分け";
+                Form1.coin += Form1.bet;
+                Form1.coinlabel.Text = Form1.coin.ToString();
+            }
+            else if (sumPoint1 > sumPoint2)
+            {
+                Console.WriteLine("プレイヤーの勝ち");
+                Form1.CrownPictureP.Visible = true;
+                Form1.WinOrLoseP.Visible = true;
+                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Red;
+                Form1.WinOrLoseP.Text = "勝ち";
+                Form1.WinOrLoseE.Visible = true;
+                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Blue;
+                Form1.WinOrLoseE.Text = "負け";
+                Form1.player.controls.pause();// ポーズ(play()で再開)
+                SoundPlayer player1 = new SoundPlayer(@"勝ち.wav");
+                player1.Play();
+                Form1.Start();
+                Form1.coin += Form1.bet * 2;
+                Form1.coinlabel.Text = Form1.coin.ToString();
+            }
+            else if (sumPoint2 > sumPoint1)
+            {
+                Console.WriteLine("プレイヤーの負け");
+                Form1.WinOrLoseP.Visible = true;
+                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Blue;
+                Form1.WinOrLoseP.Text = "負け";
+                Form1.CrownPictureE.Visible = true;
+                Form1.WinOrLoseE.Visible = true;
+                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Red;
+                Form1.WinOrLoseE.Text = "勝ち";
+                Form1.coinlabel.Text = Form1.coin.ToString();
             }
         }
     }

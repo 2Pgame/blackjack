@@ -37,29 +37,62 @@ namespace blackjack
                 SumPointP += card.Point;
 
             }
-
-            for (int i = 0; i < player2.Count; i++)
+            if (SumPointP > 21)
             {
-                if (SumPointP > 21)
+                foreach (var card in player2)
                 {
-                    if (player2[i].Id == 1)
+                    if (card.Id == 1)
                     {
-                        player2[i].Point = 1;
-                    }
-                    else if (player2[i].Id == 14)
-                    {
-                        player2[i].Point = 1;
-                    }
-                    else if (player2[i].Id == 27)
-                    {
-                        player2[i].Point = 1;
-                    }
-                    else if (player2[i].Id == 40)
-                    {
-                        player2[i].Point = 1;
+                        card.Point = 1;
                     }
                 }
             }
+            SumPointP = 0;
+            foreach (var card in player2)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP > 21)
+            {
+                foreach (var card in player2)
+                {
+                    if (card.Id == 14)
+                    {
+                        card.Point = 1;
+                    }
+                }
+            }
+            SumPointP = 0;
+            foreach (var card in player2)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP > 21)
+            {
+                foreach (var card in player2)
+                {
+                    if (card.Id == 27)
+                    {
+                        card.Point = 1;
+                    }
+                }
+            }
+            SumPointP = 0;
+            foreach (var card in player2)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP > 21)
+            {
+                foreach (var card in player2)
+                {
+                    if (card.Id == 40)
+                    {
+                        card.Point = 1;
+                    }
+                }
+            }
+            
 
             SumPointP = 0;
             foreach (var card in player2)
@@ -93,22 +126,11 @@ namespace blackjack
             Form1.pictureBoxP[Form1.playerSum].ImageLocation = list1[Form1.playerSum].Address;
             Form1.playerSum++;
             Form1.sum++;
-            foreach (var card in list1)
-            {
-                SumPointP += card.Point;
-            }
-            if (SumPointP == 21)
-            {
-                Console.WriteLine("ブラックジャック");
-                SumPointP += (float)0.5;
-                Form1.PlayerPoint.Text = "Black\nJack";
-                Form1.CardDraw.Enabled = false;
-            }
             return list1;
         }
         public float CalcPlayer(List<Card> list1)
         {
-
+            SumPointP = 0;
             foreach (Card card in list1)
             {
                 Console.WriteLine($"{card.Suit}{card.Number}");
@@ -116,7 +138,6 @@ namespace blackjack
             }
             Console.WriteLine($"現在の合計は{SumPointP}です");
 
-            SumPointP = 0;
             foreach (Card card in list1)
             {
 
@@ -128,14 +149,64 @@ namespace blackjack
                     }
                 }
 
-                SumPointP += card.Point;
-                Console.WriteLine($"現在の合計は{SumPointP}です");
             }
-            if (SumPointP <= 22)
+            SumPointP = 0;
+            foreach (Card card in list1)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP <= 21)
             {
                 Form1.PlayerPoint.Text = SumPointP.ToString();
             }
             else 
+            {
+                Form1.PlayerPoint.Text = "Burst";
+            }
+
+
+            return SumPointP;
+        }
+        public float CalcPlayerFirst(List<Card> list1)
+        {
+            SumPointP = 0;
+            foreach (Card card in list1)
+            {
+                Console.WriteLine($"{card.Suit}{card.Number}");
+                SumPointP += card.Point;
+            }
+            Console.WriteLine($"現在の合計は{SumPointP}です");
+
+            foreach (Card card in list1)
+            {
+
+                if (SumPointP == 22)
+                {
+                    if (card.Id == 1 || card.Id == 14 || card.Id == 27 || card.Id == 40)
+                    {
+                        card.Point = 1;
+                    }
+                }
+
+            }
+
+            SumPointP = 0;
+            foreach (Card card in list1)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP <= 20)
+            {
+                Form1.PlayerPoint.Text = SumPointP.ToString();
+            }
+            else if (SumPointP == 21)
+            {
+                Console.WriteLine("ブラックジャック");
+                SumPointP += (float)0.5;
+                Form1.PlayerPoint.Text = "Black\nJack";
+                Form1.CardDraw.Enabled = false;
+            }
+            else
             {
                 Form1.PlayerPoint.Text = "Burst";
             }
