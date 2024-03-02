@@ -92,7 +92,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1898, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(1898, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -104,7 +104,7 @@
             this.CardRelease,
             this.ゲーム終了ToolStripMenuItem});
             this.ゲームToolStripMenuItem.Name = "ゲームToolStripMenuItem";
-            this.ゲームToolStripMenuItem.Size = new System.Drawing.Size(68, 32);
+            this.ゲームToolStripMenuItem.Size = new System.Drawing.Size(68, 29);
             this.ゲームToolStripMenuItem.Text = "ゲーム";
             // 
             // NewGame
@@ -142,7 +142,7 @@
             this.ヘルプToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.version});
             this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
-            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(72, 32);
+            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(72, 29);
             this.ヘルプToolStripMenuItem.Text = "ヘルプ";
             // 
             // version
@@ -388,9 +388,9 @@
             this.WinOrLoseP.BackColor = System.Drawing.Color.Transparent;
             this.WinOrLoseP.Font = new System.Drawing.Font("Palatino Linotype", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WinOrLoseP.ForeColor = System.Drawing.Color.Red;
-            this.WinOrLoseP.Location = new System.Drawing.Point(75, 389);
+            this.WinOrLoseP.Location = new System.Drawing.Point(100, 390);
             this.WinOrLoseP.Name = "WinOrLoseP";
-            this.WinOrLoseP.Size = new System.Drawing.Size(176, 61);
+            this.WinOrLoseP.Size = new System.Drawing.Size(173, 61);
             this.WinOrLoseP.TabIndex = 26;
             this.WinOrLoseP.Text = "勝ち";
             this.WinOrLoseP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -400,9 +400,9 @@
             this.WinOrLoseE.BackColor = System.Drawing.Color.Transparent;
             this.WinOrLoseE.Font = new System.Drawing.Font("Palatino Linotype", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WinOrLoseE.ForeColor = System.Drawing.Color.Red;
-            this.WinOrLoseE.Location = new System.Drawing.Point(89, 132);
+            this.WinOrLoseE.Location = new System.Drawing.Point(115, 132);
             this.WinOrLoseE.Name = "WinOrLoseE";
-            this.WinOrLoseE.Size = new System.Drawing.Size(176, 61);
+            this.WinOrLoseE.Size = new System.Drawing.Size(173, 61);
             this.WinOrLoseE.TabIndex = 27;
             this.WinOrLoseE.Text = "勝ち";
             this.WinOrLoseE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
