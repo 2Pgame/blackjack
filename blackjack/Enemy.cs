@@ -1,100 +1,148 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace blackjack
 {
     internal class Enemy : Player
     {
 
-        public int SumPoint1 = 0;
-        public void CardDistribute(List<Card> shuffle)
+        public float SumPoint1 = 0;
+
+        public Enemy(Form1 form1) : base(form1)
         {
-            List<Card> list1 = new List<Card>();
-            for (int i = 1; i < 4; i = i + 2)
-            {
-                list1.Add(new Card(shuffle[i].Suit, shuffle[i].Number, shuffle[i].Id, shuffle[i].Point, shuffle[i].Address));
-            }
-            foreach (Card card in list1)
-            {
-                Console.WriteLine($"{card.Suit}{card.Number}");
-                SumPoint1 += card.Point;
-            }
-            if (SumPoint1 < 17)
-            {
-
-                int Sum1 = 1;
-                list1.Add(new Card(shuffle[3 + Sum].Suit, shuffle[3 + Sum].Number, shuffle[3 + Sum].Id, shuffle[3 + Sum].Point, shuffle[3 + Sum].Address));
-                Console.WriteLine($"{list1[1 + Sum1].Suit}{list1[1 + Sum1].Number}");
-                Sum++;
-                Sum1++;
-                SumPoint1 = 0;
-
-                foreach (var card in list1)
-                {
-
-                    SumPoint1 += card.Point;
-
-                }
-
-            }
-
-            for (int i = 0; i < list1.Count; i++)
-            {
-                if (SumPoint1 > 21)
-                {
-                    if (list1[i].Id == 1)
-                    {
-                        list1[i].Point = 1;
-                    }
-                    else if (list1[i].Id == 14)
-                    {
-                        list1[i].Point = 1;
-                    }
-                    else if (list1[i].Id == 27)
-                    {
-                        list1[i].Point = 1;
-                    }
-                    else if (list1[i].Id == 40)
-                    {
-                        list1[i].Point = 1;
-                    }
-                }
-            }
-
-            SumPoint1 = 0;
-            foreach (var card in list1)
-            {
-                SumPoint1 += card.Point;
-
-            }
-            Console.WriteLine($"敵の点数は{SumPoint1}です");
+            Form1 = form1;
+            Form1.pictureBoxP = form1.pictureBoxP;
+            Form1.pictureBoxE = form1.pictureBoxE;
         }
-        public void BJJudge(int sumPoint, int sumPoint1)
+        List<Card> list2 = new List<Card>();
+        public List<Card> CardDistributeEnemy(List<Card> shuffle)
         {
-            if (sumPoint1 == sumPoint)
+
+            list2.Add(new Card(shuffle[Form1.sum].Suit, shuffle[Form1.sum].Number, shuffle[Form1.sum].Id, shuffle[Form1.sum].Point, shuffle[Form1.sum].Address));
+            Form1.pictureBoxE[Form1.enemySum].ImageLocation = list2[Form1.enemySum].Address;
+            Form1.enemySum++;
+            Form1.sum++;
+            foreach (var card in list2)
             {
-                Console.WriteLine("引き分け");
+                SumPointE += card.Point;
             }
-            else if (sumPoint1 < sumPoint && sumPoint < 22)
+
+            for (int i = 0; i < list2.Count; i++)
             {
-                Console.WriteLine("プレイヤーの勝ち");
+                if (SumPointE > 21)
+                {
+                    if (list2[i].Id == 1)
+                    {
+                        list2[i].Point = 1;
+                    }
+                    else if (list2[i].Id == 14)
+                    {
+                        list2[i].Point = 1;
+                    }
+                    else if (list2[i].Id == 27)
+                    {
+                        list2[i].Point = 1;
+                    }
+                    else if (list2[i].Id == 40)
+                    {
+                        list2[i].Point = 1;
+                    }
+                }
             }
-            else if (sumPoint1 > sumPoint && sumPoint1 < 22 && sumPoint > 21)
+            return list2;
+        }
+        public float CardDrowEnemy(List<Card> enemy, List<Card> shuffle)
+        {
+            Form1.pictureBoxE[1].Image = null;
+            Form1.pictureBoxE[1].ImageLocation = enemy[1].Address;
+
+            SumPointE = 0;
+            foreach (Card ene in enemy)
+            { 
+                SumPointE += ene.Point;
+            }
+            Form1.DealerPoint.Text = SumPointE.ToString();
+            while (SumPointE < 17)
+            {
+                enemy.Add(new Card(shuffle[Form1.sum].Suit, shuffle[Form1.sum].Number, shuffle[Form1.sum].Id, shuffle[Form1.sum].Point, shuffle[Form1.sum].Address));
+                Form1.pictureBoxE[Form1.enemySum].ImageLocation = enemy[Form1.enemySum].Address;
+
+                Form1.sum++;
+                Form1.enemySum++;
+                SumPointE = 0;
+                foreach (var card in enemy)
+                {
+                    SumPointE += card.Point;
+
+                }
+                Form1.DealerPoint.Text = SumPointE.ToString();
+                for (int i = 0; i < enemy.Count; i++)
+                {
+                    if (SumPointE > 21)
+                    {
+                        if (enemy[i].Id == 1)
+                        {
+                            enemy[i].Point = 1;
+                        }
+                        else if (enemy[i].Id == 14)
+                        {
+                            enemy[i].Point = 1;
+                        }
+                        else if (enemy[i].Id == 27)
+                        {
+                            enemy[i].Point = 1;
+                        }
+                        else if (enemy[i].Id == 40)
+                        {
+                            enemy[i].Point = 1;
+                        }
+                    }
+                }
+
+                SumPointE = 0;
+                foreach (var card in enemy)
+                {
+                    SumPointE += card.Point;
+
+                }
+                Console.WriteLine($"現在{SumPointE}です");
+                if (SumPointE <= 21)
+                {
+                    Form1.DealerPoint.Text = SumPointE.ToString();
+                }
+                else
+                {
+                    Form1.DealerPoint.Text = "Burst";
+                }
+            }
+            return SumPointE;
+        }
+
+        public void BJJudge(float sumPoint1, float sumPoint2)
+        {
+
+            if (sumPoint1 >= 22)
             {
                 Console.WriteLine("プレイヤーの負け");
             }
-            else if (sumPoint1 > 21 && sumPoint > 21)
-            {
-                Console.WriteLine("引き分け");
-            }
-            else if (sumPoint1 > 21)
+            else if (sumPoint2 >= 22)
             {
                 Console.WriteLine("プレイヤーの勝ち");
             }
-            else
+            else if (sumPoint1 == sumPoint2)
+            {
+                Console.WriteLine("引き分け");
+            }
+            else if (sumPoint1 > sumPoint2)
+            {
+                Console.WriteLine("プレイヤーの勝ち");
+            }
+            else if (sumPoint2 > sumPoint1 )
             {
                 Console.WriteLine("プレイヤーの負け");
             }
