@@ -73,18 +73,7 @@ namespace blackjack
                 SumPointE += (float)0.5;
                 Form1.DealerPoint.Text = "Black\nJack";
             }
-            else if (sumPoint1 == sumPoint2)
-            {
-                Console.WriteLine("引き分け");
-            }
-            else if (sumPoint1 > sumPoint2)
-            {
-                Console.WriteLine("プレイヤーの勝ち");
-            }
-            else if (sumPoint2 > sumPoint1 )
-            {
-                Form1.DealerPoint.Text = SumPointE.ToString();
-            }
+
 
 
             while (SumPointE < 17)
