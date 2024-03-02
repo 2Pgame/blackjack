@@ -400,7 +400,7 @@
             this.WinOrLoseE.BackColor = System.Drawing.Color.Transparent;
             this.WinOrLoseE.Font = new System.Drawing.Font("Palatino Linotype", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WinOrLoseE.ForeColor = System.Drawing.Color.Red;
-            this.WinOrLoseE.Location = new System.Drawing.Point(115, 132);
+            this.WinOrLoseE.Location = new System.Drawing.Point(100, 123);
             this.WinOrLoseE.Name = "WinOrLoseE";
             this.WinOrLoseE.Size = new System.Drawing.Size(173, 61);
             this.WinOrLoseE.TabIndex = 27;
