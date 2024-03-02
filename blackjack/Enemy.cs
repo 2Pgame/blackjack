@@ -57,57 +57,41 @@ namespace blackjack
             }
             return list2;
         }
-        public float CardDrowEnemy(List<Card> enemy, List<Card> shuffle)
+        public float CardDrowEnemy(List<Card> enemys, List<Card> shuffle)
         {
             Form1.pictureBoxE[1].Image = null;
-            Form1.pictureBoxE[1].ImageLocation = enemy[1].Address;
+            Form1.pictureBoxE[1].ImageLocation = enemys[1].Address;
 
             SumPointE = 0;
-            foreach (Card ene in enemy)
+            foreach (Card enemy in enemys)
             {
-                SumPointE += ene.Point;
+                SumPointE += enemy.Point;
             }
             if (SumPointE == 21)
             {
                 Console.WriteLine("ブラックジャック");
                 SumPointE += (float)0.5;
                 Form1.DealerPoint.Text = "Black\nJack";
+
             }
-
-
-
-            while (SumPointE < 17)
+            if (SumPointE >= 22)
             {
-                enemy.Add(new Card(shuffle[Form1.sum].Suit, shuffle[Form1.sum].Number, shuffle[Form1.sum].Id, shuffle[Form1.sum].Point, shuffle[Form1.sum].Address));
-                Form1.pictureBoxE[Form1.enemySum].ImageLocation = enemy[Form1.enemySum].Address;
-                Form1.player2.Play();
-                Form1.sum++;
-                Form1.enemySum++;
-                SumPointE = 0;
-                foreach (var card in enemy)
+                foreach (var card in enemys)
                 {
-                    SumPointE += card.Point;
-
-                }
-                Form1.DealerPoint.Text = SumPointE.ToString();
-                if (SumPointE > 22)
-                {
-                    foreach (var card in enemy)
+                    if (card.Id == 1)
                     {
-                        if (card.Id == 1)
-                        {
-                            card.Point = 1;
-                        }
+                        card.Point = 1;
                     }
                 }
+
                 SumPointE = 0;
-                foreach (var card in enemy)
+                foreach (var card in enemys)
                 {
                     SumPointE += card.Point;
                 }
-                if (SumPointP > 22)
+                if (SumPointE >= 22)
                 {
-                    foreach (var card in enemy)
+                    foreach (var card in enemys)
                     {
                         if (card.Id == 14)
                         {
@@ -115,14 +99,14 @@ namespace blackjack
                         }
                     }
                 }
-                SumPointP = 0;
-                foreach (var card in enemy)
+                SumPointE = 0;
+                foreach (var card in enemys)
                 {
                     SumPointE += card.Point;
                 }
-                if (SumPointE > 22)
+                if (SumPointE >= 22)
                 {
-                    foreach (var card in enemy)
+                    foreach (var card in enemys)
                     {
                         if (card.Id == 27)
                         {
@@ -131,13 +115,13 @@ namespace blackjack
                     }
                 }
                 SumPointE = 0;
-                foreach (var card in enemy)
+                foreach (var card in enemys)
                 {
                     SumPointE += card.Point;
                 }
-                if (SumPointE > 22)
+                if (SumPointE >= 22)
                 {
-                    foreach (var card in enemy)
+                    foreach (var card in enemys)
                     {
                         if (card.Id == 40)
                         {
@@ -145,24 +129,102 @@ namespace blackjack
                         }
                     }
                 }
+                SumPointE = 0;
+                foreach (var card in enemys)
+                {
+                    SumPointE += card.Point;
 
+                }
             }
 
-            SumPointE = 0;
-            foreach (var card in enemy)
+            while (SumPointE < 17)
             {
-                SumPointE += card.Point;
+                enemys.Add(new Card(shuffle[Form1.sum].Suit, shuffle[Form1.sum].Number, shuffle[Form1.sum].Id, shuffle[Form1.sum].Point, shuffle[Form1.sum].Address));
+                Form1.pictureBoxE[Form1.enemySum].ImageLocation = enemys[Form1.enemySum].Address;
+                Form1.player2.Play();
+                Form1.sum++;
+                Form1.enemySum++;
+                SumPointE = 0;
+                foreach (var card in enemys)
+                {
+                    SumPointE += card.Point;
 
+                }
+                Form1.DealerPoint.Text = SumPointE.ToString();
+                if (SumPointE > 22)
+                {
+                    foreach (var card in enemys)
+                    {
+                        if (card.Id == 1)
+                        {
+                            card.Point = 1;
+                        }
+                    }
+                }
+                SumPointE = 0;
+                foreach (var card in enemys)
+                {
+                    SumPointE += card.Point;
+                }
+                if (SumPointE > 22)
+                {
+                    foreach (var card in enemys)
+                    {
+                        if (card.Id == 14)
+                        {
+                            card.Point = 1;
+                        }
+                    }
+                }
+                SumPointE = 0;
+                foreach (var card in enemys)
+                {
+                    SumPointE += card.Point;
+                }
+                if (SumPointE > 22)
+                {
+                    foreach (var card in enemys)
+                    {
+                        if (card.Id == 27)
+                        {
+                            card.Point = 1;
+                        }
+                    }
+                }
+                SumPointE = 0;
+                foreach (var card in enemys)
+                {
+                    SumPointE += card.Point;
+                }
+                if (SumPointE > 22)
+                {
+                    foreach (var card in enemys)
+                    {
+                        if (card.Id == 40)
+                        {
+                            card.Point = 1;
+                        }
+                    }
+                }
+                SumPointE = 0;
+                foreach (var card in enemys)
+                {
+                    SumPointE += card.Point;
+
+                }
             }
+
+
             Console.WriteLine($"現在{SumPointE}です");
             if (SumPointE <= 21)
             {
                 Form1.DealerPoint.Text = SumPointE.ToString();
             }
-            else
+            else if(SumPointE >= 22) 
             {
                 Form1.DealerPoint.Text = "Burst";
             }
+
             return SumPointE;
         }
 
