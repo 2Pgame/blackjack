@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,83 +11,211 @@ namespace blackjack
     {
         public int Sum = 1;
         public int Point;
-        public int SumPoint = 0;
+        public float SumPoint = 0;
+        public float SumPointP;
+        public float SumPointE;
 
-        public List<Card> CardDistribute(List<Card> shuffle)
+        public Player(Form1 form1)
         {
-            List<Card> list1 = new List<Card>();
-            for (int i = 0; i < 4; i = i + 2)
+            Form1 = form1;
+            Form1.pictureBoxP = form1.pictureBoxP;
+            Form1.pictureBoxE = form1.pictureBoxE;
+        }
+
+        public Form1 Form1 { get; set; }
+
+        public List<Card> CardDrowPlayer(List<Card> player2, List<Card> shuffle)
+        {
+            player2.Add(new Card(shuffle[Form1.sum].Suit, shuffle[Form1.sum].Number, shuffle[Form1.sum].Id, shuffle[Form1.sum].Point, shuffle[Form1.sum].Address));
+            Form1.pictureBoxP[Form1.playerSum].ImageLocation = player2[Form1.playerSum].Address;
+
+            Form1.sum++;
+            Form1.playerSum++;
+            SumPointP = 0;
+            foreach (var card in player2)
             {
-                list1.Add(new Card(shuffle[i].Suit, shuffle[i].Number, shuffle[i].Id, shuffle[i].Point, shuffle[i].Address));
+                SumPointP += card.Point;
+
             }
+            if (SumPointP > 21)
+            {
+                foreach (var card in player2)
+                {
+                    if (card.Id == 1)
+                    {
+                        card.Point = 1;
+                    }
+                }
+            }
+            SumPointP = 0;
+            foreach (var card in player2)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP > 21)
+            {
+                foreach (var card in player2)
+                {
+                    if (card.Id == 14)
+                    {
+                        card.Point = 1;
+                    }
+                }
+            }
+            SumPointP = 0;
+            foreach (var card in player2)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP > 21)
+            {
+                foreach (var card in player2)
+                {
+                    if (card.Id == 27)
+                    {
+                        card.Point = 1;
+                    }
+                }
+            }
+            SumPointP = 0;
+            foreach (var card in player2)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP > 21)
+            {
+                foreach (var card in player2)
+                {
+                    if (card.Id == 40)
+                    {
+                        card.Point = 1;
+                    }
+                }
+            }
+            
+
+            SumPointP = 0;
+            foreach (var card in player2)
+            {
+                SumPointP += card.Point;
+
+            }
+            Console.WriteLine($"現在{SumPointP}です");
+            if (SumPointP <= 21)
+            {
+                Form1.PlayerPoint.Text = SumPointP.ToString();
+            }
+            else if (SumPointP >= 22)
+            {
+                Form1.PlayerPoint.Text = "Burst";
+                Form1.CardDraw.Enabled = false;
+            }
+            else
+            {
+               
+            }
+
+            return player2;
+        }
+
+        List<Card> list1 = new List<Card>();
+        public List<Card> CardDistributePlayer(List<Card> shuffle)
+        {
+
+            list1.Add(new Card(shuffle[Form1.sum].Suit, shuffle[Form1.sum].Number, shuffle[Form1.sum].Id, shuffle[Form1.sum].Point, shuffle[Form1.sum].Address));
+            Form1.pictureBoxP[Form1.playerSum].ImageLocation = list1[Form1.playerSum].Address;
+            Form1.playerSum++;
+            Form1.sum++;
+
+            return list1;
+        }
+        public float CalcPlayer(List<Card> list1)
+        {
+            SumPointP = 0;
             foreach (Card card in list1)
             {
                 Console.WriteLine($"{card.Suit}{card.Number}");
-                SumPoint += card.Point;
+                SumPointP += card.Point;
             }
-            Console.WriteLine($"現在の合計は{SumPoint}です");
+            Console.WriteLine($"現在の合計は{SumPointP}です");
+
             foreach (Card card in list1)
             {
-                SumPoint = 0;
-                if (SumPoint > 21)
+
+                if (SumPointP >= 22)
                 {
                     if (card.Id == 1 || card.Id == 14 || card.Id == 27 || card.Id == 40)
                     {
                         card.Point = 1;
                     }
                 }
-                SumPoint += card.Point;
+
+            }
+            SumPointP = 0;
+            foreach (Card card in list1)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP <= 21)
+            {
+                Form1.PlayerPoint.Text = SumPointP.ToString();
+            }
+            else 
+            {
+                Form1.PlayerPoint.Text = "Burst";
             }
 
-            return list1;
+
+            return SumPointP;
         }
-        public List<Card> CardDrow(List<Card> player, List<Card> shuffle)
+        public float CalcPlayerFirst(List<Card> list1)
         {
-            player.Add(new Card(shuffle[3 + Sum].Suit, shuffle[3 + Sum].Number, shuffle[3 + Sum].Id, shuffle[3 + Sum].Point, shuffle[3 + Sum].Address));
-            Console.WriteLine($"{player[1 + Sum].Suit}{player[1 + Sum].Number}");
-
-            Sum++;
-            SumPoint = 0;
-            foreach (var card in player)
+            SumPointP = 0;
+            foreach (Card card in list1)
             {
-                SumPoint += card.Point;
-
+                Console.WriteLine($"{card.Suit}{card.Number}");
+                SumPointP += card.Point;
             }
+            Console.WriteLine($"現在の合計は{SumPointP}です");
 
-            for (int i = 0; i < player.Count; i++)
+            foreach (Card card in list1)
             {
-                if (SumPoint > 21)
+
+                if (SumPointP == 22)
                 {
-                    if (player[i].Id == 1)
+                    if (card.Id == 1 || card.Id == 14 || card.Id == 27 || card.Id == 40)
                     {
-                        player[i].Point = 1;
-                    }
-                    else if (player[i].Id == 14)
-                    {
-                        player[i].Point = 1;
-                    }
-                    else if (player[i].Id == 27)
-                    {
-                        player[i].Point = 1;
-                    }
-                    else if (player[i].Id == 40)
-                    {
-                        player[i].Point = 1;
+                        card.Point = 1;
                     }
                 }
+
             }
 
-            SumPoint = 0;
-            foreach (var card in player)
+            SumPointP = 0;
+            foreach (Card card in list1)
             {
-                SumPoint += card.Point;
-
+                SumPointP += card.Point;
             }
-            Console.WriteLine($"現在{SumPoint}です");
+            if (SumPointP <= 20)
+            {
+                Form1.PlayerPoint.Text = SumPointP.ToString();
+            }
+            else if (SumPointP == 21)
+            {
+                Console.WriteLine("ブラックジャック");
+                SumPointP += (float)0.5;
+                Form1.PlayerPoint.Text = "Black\nJack";
+                Form1.CardDraw.Enabled = false;
+            }
+            else
+            {
+                Form1.PlayerPoint.Text = "Burst";
+            }
 
-            return player;
+
+            return SumPointP;
         }
-
     }
 }
+
 
