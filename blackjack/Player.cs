@@ -126,7 +126,6 @@ namespace blackjack
             Form1.pictureBoxP[Form1.playerSum].ImageLocation = list1[Form1.playerSum].Address;
             Form1.playerSum++;
             Form1.sum++;
-
             return list1;
         }
         public float CalcPlayer(List<Card> list1)

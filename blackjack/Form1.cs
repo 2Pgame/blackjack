@@ -132,7 +132,6 @@ namespace blackjack
         Random random = new Random();
         void CardShuffle()
         {
-
             for (int i = 51; i >= 0; i--)
             {
 
