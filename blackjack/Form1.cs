@@ -29,7 +29,7 @@ namespace blackjack
             // ループ再生を指定
             player.settings.setMode("loop", true);
             // 通常は自動再生にファイルを指定すればループ再生がはじまります
-            player.URL = @"カジノ ドラクエ4BGM.wav";
+            player.URL = @"BGM.wav";
             player.controls.play();
             //背景にカジノを使う
             pictureBox0.ImageLocation = "image\\cajino.png";
@@ -223,6 +223,11 @@ namespace blackjack
             timer1.Interval = 5000;
             timer1.Start();
         }
+        public void Start2()
+        {
+            timer1.Interval = 10000;
+            timer1.Start();
+        }
         private void PlayStart()
         {
             player.controls.play();// ポーズ(play()で再開)
@@ -244,11 +249,13 @@ namespace blackjack
             PlayerCard3.Image = null;
             PlayerCard4.Image = null;
             PlayerCard5.Image = null;
+            PlayerCard6.Image = null;
             DealerCard1.Image = null;
             DealerCard2.Image = null;
             DealerCard3.Image = null;
             DealerCard4.Image = null;
             DealerCard5.Image = null;
+            DealerCard6.Image = null;
             NewGame.Enabled = true;
             Initialization.Enabled = false;
             WinOrLoseP.Visible = false;
