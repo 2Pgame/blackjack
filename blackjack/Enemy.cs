@@ -151,7 +151,7 @@ namespace blackjack
 
                 }
                 Form1.DealerPoint.Text = SumPointE.ToString();
-                if (SumPointE > 22)
+                if (SumPointE >= 22)
                 {
                     foreach (var card in enemys)
                     {
@@ -166,7 +166,7 @@ namespace blackjack
                 {
                     SumPointE += card.Point;
                 }
-                if (SumPointE > 22)
+                if (SumPointE >= 22)
                 {
                     foreach (var card in enemys)
                     {
@@ -181,7 +181,7 @@ namespace blackjack
                 {
                     SumPointE += card.Point;
                 }
-                if (SumPointE > 22)
+                if (SumPointE >= 22)
                 {
                     foreach (var card in enemys)
                     {
@@ -196,7 +196,7 @@ namespace blackjack
                 {
                     SumPointE += card.Point;
                 }
-                if (SumPointE > 22)
+                if (SumPointE >= 22)
                 {
                     foreach (var card in enemys)
                     {
@@ -220,7 +220,7 @@ namespace blackjack
             {
                 Form1.DealerPoint.Text = SumPointE.ToString();
             }
-            else if(SumPointE >= 22) 
+            else if (SumPointE >= 22)
             {
                 Form1.DealerPoint.Text = "Burst";
             }
@@ -256,11 +256,19 @@ namespace blackjack
                 Form1.player.controls.pause();// ポーズ(play()で再開)
                 Form1.coin += Form1.bet * 2;
                 Form1.coinlabel.Text = Form1.coin.ToString();
+                if (Form1.bet >= 10)
+                {
+                    SoundPlayer player1 = new SoundPlayer(@"ファンファーレ.wav");
+                    player1.Play();
+                    Form1.Start2();
+                }
+                else
+                {
+                    SoundPlayer player1 = new SoundPlayer(@"勝ち.wav");
+                    player1.Play();
+                    Form1.Start();
+                }
 
-                SoundPlayer player1 = new SoundPlayer(@"勝ち.wav");
-                player1.Play();
-
-                Form1.Start();
 
             }
             else if (sumPoint1 == sumPoint2)
@@ -286,9 +294,18 @@ namespace blackjack
                 Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Blue;
                 Form1.WinOrLoseE.Text = "負け";
                 Form1.player.controls.pause();// ポーズ(play()で再開)
-                SoundPlayer player1 = new SoundPlayer(@"勝ち.wav");
-                player1.Play();
-                Form1.Start();
+                if (Form1.bet >= 10)
+                {
+                    SoundPlayer player1 = new SoundPlayer(@"ファンファーレ.wav");
+                    player1.Play();
+                    Form1.Start2();
+                }
+                else
+                {
+                    SoundPlayer player1 = new SoundPlayer(@"勝ち.wav");
+                    player1.Play();
+                    Form1.Start();
+                }
                 Form1.coin += Form1.bet * 2;
                 Form1.coinlabel.Text = Form1.coin.ToString();
             }

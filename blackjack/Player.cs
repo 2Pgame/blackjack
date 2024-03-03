@@ -37,62 +37,8 @@ namespace blackjack
                 SumPointP += card.Point;
 
             }
-            if (SumPointP > 21)
-            {
-                foreach (var card in player2)
-                {
-                    if (card.Id == 1)
-                    {
-                        card.Point = 1;
-                    }
-                }
-            }
-            SumPointP = 0;
-            foreach (var card in player2)
-            {
-                SumPointP += card.Point;
-            }
-            if (SumPointP > 21)
-            {
-                foreach (var card in player2)
-                {
-                    if (card.Id == 14)
-                    {
-                        card.Point = 1;
-                    }
-                }
-            }
-            SumPointP = 0;
-            foreach (var card in player2)
-            {
-                SumPointP += card.Point;
-            }
-            if (SumPointP > 21)
-            {
-                foreach (var card in player2)
-                {
-                    if (card.Id == 27)
-                    {
-                        card.Point = 1;
-                    }
-                }
-            }
-            SumPointP = 0;
-            foreach (var card in player2)
-            {
-                SumPointP += card.Point;
-            }
-            if (SumPointP > 21)
-            {
-                foreach (var card in player2)
-                {
-                    if (card.Id == 40)
-                    {
-                        card.Point = 1;
-                    }
-                }
-            }
-            
+            AToChange(player2);
+
 
             SumPointP = 0;
             foreach (var card in player2)
@@ -138,18 +84,7 @@ namespace blackjack
             }
             Console.WriteLine($"現在の合計は{SumPointP}です");
 
-            foreach (Card card in list1)
-            {
-
-                if (SumPointP >= 22)
-                {
-                    if (card.Id == 1 || card.Id == 14 || card.Id == 27 || card.Id == 40)
-                    {
-                        card.Point = 1;
-                    }
-                }
-
-            }
+            AToChange(list1);
             SumPointP = 0;
             foreach (Card card in list1)
             {
@@ -177,18 +112,12 @@ namespace blackjack
             }
             Console.WriteLine($"現在の合計は{SumPointP}です");
 
-            foreach (Card card in list1)
+            foreach (var card in list1)
             {
-
-                if (SumPointP == 22)
-                {
-                    if (card.Id == 1 || card.Id == 14 || card.Id == 27 || card.Id == 40)
-                    {
-                        card.Point = 1;
-                    }
-                }
+                SumPointP += card.Point;
 
             }
+            AToChange(list1);
 
             SumPointP = 0;
             foreach (Card card in list1)
@@ -213,6 +142,64 @@ namespace blackjack
 
 
             return SumPointP;
+        }
+        void AToChange(List<Card> list1)
+        {
+            if (SumPointP >= 22)
+            {
+                foreach (var card in list1)
+                {
+                    if (card.Id == 1)
+                    {
+                        card.Point = 1;
+                    }
+                }
+            }
+            SumPointP = 0;
+            foreach (var card in list1)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP >= 22)
+            {
+                foreach (var card in list1)
+                {
+                    if (card.Id == 14)
+                    {
+                        card.Point = 1;
+                    }
+                }
+            }
+            SumPointP = 0;
+            foreach (var card in list1)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP >= 22)
+            {
+                foreach (var card in list1)
+                {
+                    if (card.Id == 27)
+                    {
+                        card.Point = 1;
+                    }
+                }
+            }
+            SumPointP = 0;
+            foreach (var card in list1)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP >= 22)
+            {
+                foreach (var card in list1)
+                {
+                    if (card.Id == 40)
+                    {
+                        card.Point = 1;
+                    }
+                }
+            }
         }
     }
 }

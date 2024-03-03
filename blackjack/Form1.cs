@@ -29,7 +29,7 @@ namespace blackjack
             // ループ再生を指定
             player.settings.setMode("loop", true);
             // 通常は自動再生にファイルを指定すればループ再生がはじまります
-            player.URL = @"カジノ ドラクエ4BGM.wav";
+            player.URL = @"BGM.wav";
             player.controls.play();
             //背景にカジノを使う
             pictureBox0.ImageLocation = "image\\cajino.png";
@@ -45,11 +45,13 @@ namespace blackjack
             PlayerCard3.Parent = pictureBox0;
             PlayerCard4.Parent = pictureBox0;
             PlayerCard5.Parent = pictureBox0;
+            PlayerCard6.Parent = pictureBox0;
             DealerCard1.Parent = pictureBox0;
             DealerCard2.Parent = pictureBox0;
             DealerCard3.Parent = pictureBox0;
             DealerCard4.Parent = pictureBox0;
             DealerCard5.Parent = pictureBox0;
+            DealerCard6.Parent = pictureBox0;
 
             CrownPictureP.Parent = pictureBox0;
             CrownPictureE.Parent = pictureBox0;
@@ -88,11 +90,13 @@ namespace blackjack
             pictureBoxP.Add(PlayerCard3);
             pictureBoxP.Add(PlayerCard4);
             pictureBoxP.Add(PlayerCard5);
+            pictureBoxP.Add(PlayerCard6);
             pictureBoxE.Add(DealerCard1);
             pictureBoxE.Add(DealerCard2);
             pictureBoxE.Add(DealerCard3);
             pictureBoxE.Add(DealerCard4);
             pictureBoxE.Add(DealerCard5);
+            pictureBoxE.Add(DealerCard6);
         }
         private void ShuffleClicked(object sender, EventArgs e)
         {
@@ -132,10 +136,8 @@ namespace blackjack
         Random random = new Random();
         void CardShuffle()
         {
-
             for (int i = 51; i >= 0; i--)
             {
-
                 int num = random.Next(0, i + 1);
                 shuffle.Add(new Card(cards[num].Suit, cards[num].Number, cards[num].Id, cards[num].Point, cards[num].Address));
                 cards.RemoveAt(num);
@@ -186,9 +188,9 @@ namespace blackjack
             }
             else
             {
-            list1 = player1.CardDrowPlayer(list1, shuffle);
-            SumPointP = player1.CalcPlayer(list1);
-            player2.Play();
+                list1 = player1.CardDrowPlayer(list1, shuffle);
+                SumPointP = player1.CalcPlayer(list1);
+                player2.Play();
             }
 
         }
@@ -200,14 +202,14 @@ namespace blackjack
                 MessageBox.Show("最低１枚かけてください");
             }
             else
-            { 
-            SumPointE = enemy.CardDrowEnemy(list2, shuffle);
-            Console.WriteLine($"{SumPointP},{SumPointE}");
+            {
+                SumPointE = enemy.CardDrowEnemy(list2, shuffle);
+                Console.WriteLine($"{SumPointP},{SumPointE}");
 
-            enemy.BJJudge(SumPointP, SumPointE);
-            Initialization.Enabled = true;
-            CardDraw.Enabled = false;
-            CardJudge.Enabled = false;
+                enemy.BJJudge(SumPointP, SumPointE);
+                Initialization.Enabled = true;
+                CardDraw.Enabled = false;
+                CardJudge.Enabled = false;
             }
         }
 
@@ -219,6 +221,11 @@ namespace blackjack
         public void Start()
         {
             timer1.Interval = 5000;
+            timer1.Start();
+        }
+        public void Start2()
+        {
+            timer1.Interval = 10000;
             timer1.Start();
         }
         private void PlayStart()
@@ -242,11 +249,13 @@ namespace blackjack
             PlayerCard3.Image = null;
             PlayerCard4.Image = null;
             PlayerCard5.Image = null;
+            PlayerCard6.Image = null;
             DealerCard1.Image = null;
             DealerCard2.Image = null;
             DealerCard3.Image = null;
             DealerCard4.Image = null;
             DealerCard5.Image = null;
+            DealerCard6.Image = null;
             NewGame.Enabled = true;
             Initialization.Enabled = false;
             WinOrLoseP.Visible = false;
@@ -271,7 +280,7 @@ namespace blackjack
             {
                 BetButton1.Enabled = false;
             }
-            else 
+            else
             {
                 bet++;
                 coin--;
@@ -280,5 +289,4 @@ namespace blackjack
             }
         }
     }
-
 }

@@ -65,6 +65,8 @@
             this.rest = new System.Windows.Forms.Label();
             this.coinlabel = new System.Windows.Forms.Label();
             this.BetButton1 = new System.Windows.Forms.Button();
+            this.PlayerCard6 = new System.Windows.Forms.PictureBox();
+            this.DealerCard6 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BetButton)).BeginInit();
@@ -80,6 +82,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayerCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrownPictureE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrownPictureP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerCard6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DealerCard6)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -166,7 +170,7 @@
             // 
             this.BetButton.BackColor = System.Drawing.Color.Transparent;
             this.BetButton.Enabled = false;
-            this.BetButton.Location = new System.Drawing.Point(702, 535);
+            this.BetButton.Location = new System.Drawing.Point(657, 535);
             this.BetButton.Name = "BetButton";
             this.BetButton.Size = new System.Drawing.Size(83, 91);
             this.BetButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -201,7 +205,7 @@
             this.DealerCard1.BackColor = System.Drawing.Color.Transparent;
             this.DealerCard1.Location = new System.Drawing.Point(493, 52);
             this.DealerCard1.Name = "DealerCard1";
-            this.DealerCard1.Size = new System.Drawing.Size(170, 215);
+            this.DealerCard1.Size = new System.Drawing.Size(144, 204);
             this.DealerCard1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DealerCard1.TabIndex = 9;
             this.DealerCard1.TabStop = false;
@@ -209,9 +213,9 @@
             // DealerCard2
             // 
             this.DealerCard2.BackColor = System.Drawing.Color.Transparent;
-            this.DealerCard2.Location = new System.Drawing.Point(702, 52);
+            this.DealerCard2.Location = new System.Drawing.Point(648, 52);
             this.DealerCard2.Name = "DealerCard2";
-            this.DealerCard2.Size = new System.Drawing.Size(170, 215);
+            this.DealerCard2.Size = new System.Drawing.Size(144, 204);
             this.DealerCard2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DealerCard2.TabIndex = 10;
             this.DealerCard2.TabStop = false;
@@ -219,9 +223,9 @@
             // DealerCard3
             // 
             this.DealerCard3.BackColor = System.Drawing.Color.Transparent;
-            this.DealerCard3.Location = new System.Drawing.Point(910, 52);
+            this.DealerCard3.Location = new System.Drawing.Point(803, 52);
             this.DealerCard3.Name = "DealerCard3";
-            this.DealerCard3.Size = new System.Drawing.Size(170, 215);
+            this.DealerCard3.Size = new System.Drawing.Size(144, 204);
             this.DealerCard3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DealerCard3.TabIndex = 11;
             this.DealerCard3.TabStop = false;
@@ -229,9 +233,9 @@
             // DealerCard4
             // 
             this.DealerCard4.BackColor = System.Drawing.Color.Transparent;
-            this.DealerCard4.Location = new System.Drawing.Point(1118, 52);
+            this.DealerCard4.Location = new System.Drawing.Point(958, 52);
             this.DealerCard4.Name = "DealerCard4";
-            this.DealerCard4.Size = new System.Drawing.Size(170, 215);
+            this.DealerCard4.Size = new System.Drawing.Size(144, 204);
             this.DealerCard4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DealerCard4.TabIndex = 12;
             this.DealerCard4.TabStop = false;
@@ -239,9 +243,9 @@
             // DealerCard5
             // 
             this.DealerCard5.BackColor = System.Drawing.Color.Transparent;
-            this.DealerCard5.Location = new System.Drawing.Point(1327, 52);
+            this.DealerCard5.Location = new System.Drawing.Point(1113, 52);
             this.DealerCard5.Name = "DealerCard5";
-            this.DealerCard5.Size = new System.Drawing.Size(170, 215);
+            this.DealerCard5.Size = new System.Drawing.Size(144, 204);
             this.DealerCard5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DealerCard5.TabIndex = 13;
             this.DealerCard5.TabStop = false;
@@ -249,9 +253,9 @@
             // PlayerCard5
             // 
             this.PlayerCard5.BackColor = System.Drawing.Color.Transparent;
-            this.PlayerCard5.Location = new System.Drawing.Point(1327, 316);
+            this.PlayerCard5.Location = new System.Drawing.Point(1113, 316);
             this.PlayerCard5.Name = "PlayerCard5";
-            this.PlayerCard5.Size = new System.Drawing.Size(170, 215);
+            this.PlayerCard5.Size = new System.Drawing.Size(144, 204);
             this.PlayerCard5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PlayerCard5.TabIndex = 18;
             this.PlayerCard5.TabStop = false;
@@ -259,9 +263,9 @@
             // PlayerCard4
             // 
             this.PlayerCard4.BackColor = System.Drawing.Color.Transparent;
-            this.PlayerCard4.Location = new System.Drawing.Point(1118, 316);
+            this.PlayerCard4.Location = new System.Drawing.Point(958, 316);
             this.PlayerCard4.Name = "PlayerCard4";
-            this.PlayerCard4.Size = new System.Drawing.Size(170, 215);
+            this.PlayerCard4.Size = new System.Drawing.Size(144, 204);
             this.PlayerCard4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PlayerCard4.TabIndex = 17;
             this.PlayerCard4.TabStop = false;
@@ -269,9 +273,9 @@
             // PlayerCard3
             // 
             this.PlayerCard3.BackColor = System.Drawing.Color.Transparent;
-            this.PlayerCard3.Location = new System.Drawing.Point(910, 316);
+            this.PlayerCard3.Location = new System.Drawing.Point(803, 316);
             this.PlayerCard3.Name = "PlayerCard3";
-            this.PlayerCard3.Size = new System.Drawing.Size(170, 215);
+            this.PlayerCard3.Size = new System.Drawing.Size(144, 204);
             this.PlayerCard3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PlayerCard3.TabIndex = 16;
             this.PlayerCard3.TabStop = false;
@@ -279,9 +283,9 @@
             // PlayerCard2
             // 
             this.PlayerCard2.BackColor = System.Drawing.Color.Transparent;
-            this.PlayerCard2.Location = new System.Drawing.Point(702, 316);
+            this.PlayerCard2.Location = new System.Drawing.Point(648, 316);
             this.PlayerCard2.Name = "PlayerCard2";
-            this.PlayerCard2.Size = new System.Drawing.Size(170, 215);
+            this.PlayerCard2.Size = new System.Drawing.Size(144, 204);
             this.PlayerCard2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PlayerCard2.TabIndex = 15;
             this.PlayerCard2.TabStop = false;
@@ -291,7 +295,7 @@
             this.PlayerCard1.BackColor = System.Drawing.Color.Transparent;
             this.PlayerCard1.Location = new System.Drawing.Point(493, 316);
             this.PlayerCard1.Name = "PlayerCard1";
-            this.PlayerCard1.Size = new System.Drawing.Size(170, 215);
+            this.PlayerCard1.Size = new System.Drawing.Size(144, 204);
             this.PlayerCard1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PlayerCard1.TabIndex = 14;
             this.PlayerCard1.TabStop = false;
@@ -301,7 +305,7 @@
             this.CardDraw.AutoSize = true;
             this.CardDraw.Enabled = false;
             this.CardDraw.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.CardDraw.Location = new System.Drawing.Point(829, 568);
+            this.CardDraw.Location = new System.Drawing.Point(784, 568);
             this.CardDraw.Name = "CardDraw";
             this.CardDraw.Size = new System.Drawing.Size(102, 30);
             this.CardDraw.TabIndex = 19;
@@ -314,7 +318,7 @@
             this.CardJudge.AutoSize = true;
             this.CardJudge.Enabled = false;
             this.CardJudge.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.CardJudge.Location = new System.Drawing.Point(962, 568);
+            this.CardJudge.Location = new System.Drawing.Point(917, 568);
             this.CardJudge.Name = "CardJudge";
             this.CardJudge.Size = new System.Drawing.Size(75, 28);
             this.CardJudge.TabIndex = 20;
@@ -355,7 +359,7 @@
             this.Initialization.AutoSize = true;
             this.Initialization.Enabled = false;
             this.Initialization.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Initialization.Location = new System.Drawing.Point(1063, 568);
+            this.Initialization.Location = new System.Drawing.Point(1018, 568);
             this.Initialization.Name = "Initialization";
             this.Initialization.Size = new System.Drawing.Size(75, 28);
             this.Initialization.TabIndex = 23;
@@ -411,7 +415,7 @@
             // 
             this.rest.AutoSize = true;
             this.rest.BackColor = System.Drawing.Color.Transparent;
-            this.rest.Location = new System.Drawing.Point(592, 574);
+            this.rest.Location = new System.Drawing.Point(547, 574);
             this.rest.Name = "rest";
             this.rest.Size = new System.Drawing.Size(37, 18);
             this.rest.TabIndex = 28;
@@ -421,7 +425,7 @@
             // 
             this.coinlabel.AutoSize = true;
             this.coinlabel.BackColor = System.Drawing.Color.Transparent;
-            this.coinlabel.Location = new System.Drawing.Point(635, 574);
+            this.coinlabel.Location = new System.Drawing.Point(590, 574);
             this.coinlabel.Name = "coinlabel";
             this.coinlabel.Size = new System.Drawing.Size(26, 18);
             this.coinlabel.TabIndex = 29;
@@ -431,7 +435,7 @@
             // BetButton1
             // 
             this.BetButton1.AutoSize = true;
-            this.BetButton1.Location = new System.Drawing.Point(702, 568);
+            this.BetButton1.Location = new System.Drawing.Point(657, 568);
             this.BetButton1.Name = "BetButton1";
             this.BetButton1.Size = new System.Drawing.Size(83, 28);
             this.BetButton1.TabIndex = 30;
@@ -440,12 +444,34 @@
             this.BetButton1.Visible = false;
             this.BetButton1.Click += new System.EventHandler(this.BetButton1Clicked);
             // 
+            // PlayerCard6
+            // 
+            this.PlayerCard6.BackColor = System.Drawing.Color.Transparent;
+            this.PlayerCard6.Location = new System.Drawing.Point(1268, 316);
+            this.PlayerCard6.Name = "PlayerCard6";
+            this.PlayerCard6.Size = new System.Drawing.Size(144, 204);
+            this.PlayerCard6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PlayerCard6.TabIndex = 32;
+            this.PlayerCard6.TabStop = false;
+            // 
+            // DealerCard6
+            // 
+            this.DealerCard6.BackColor = System.Drawing.Color.Transparent;
+            this.DealerCard6.Location = new System.Drawing.Point(1268, 52);
+            this.DealerCard6.Name = "DealerCard6";
+            this.DealerCard6.Size = new System.Drawing.Size(144, 204);
+            this.DealerCard6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DealerCard6.TabIndex = 31;
+            this.DealerCard6.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
+            this.Controls.Add(this.PlayerCard6);
+            this.Controls.Add(this.DealerCard6);
             this.Controls.Add(this.BetButton1);
             this.Controls.Add(this.coinlabel);
             this.Controls.Add(this.rest);
@@ -496,6 +522,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayerCard1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrownPictureE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrownPictureP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerCard6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DealerCard6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -538,6 +566,8 @@
         private System.Windows.Forms.Label rest;
         public System.Windows.Forms.Label coinlabel;
         private System.Windows.Forms.Button BetButton1;
+        private System.Windows.Forms.PictureBox PlayerCard6;
+        private System.Windows.Forms.PictureBox DealerCard6;
     }
 }
 
