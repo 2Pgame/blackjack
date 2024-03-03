@@ -132,10 +132,8 @@ namespace blackjack
         Random random = new Random();
         void CardShuffle()
         {
-
             for (int i = 51; i >= 0; i--)
             {
-
                 int num = random.Next(0, i + 1);
                 shuffle.Add(new Card(cards[num].Suit, cards[num].Number, cards[num].Id, cards[num].Point, cards[num].Address));
                 cards.RemoveAt(num);
@@ -186,9 +184,9 @@ namespace blackjack
             }
             else
             {
-            list1 = player1.CardDrowPlayer(list1, shuffle);
-            SumPointP = player1.CalcPlayer(list1);
-            player2.Play();
+                list1 = player1.CardDrowPlayer(list1, shuffle);
+                SumPointP = player1.CalcPlayer(list1);
+                player2.Play();
             }
 
         }
@@ -200,14 +198,14 @@ namespace blackjack
                 MessageBox.Show("最低１枚かけてください");
             }
             else
-            { 
-            SumPointE = enemy.CardDrowEnemy(list2, shuffle);
-            Console.WriteLine($"{SumPointP},{SumPointE}");
+            {
+                SumPointE = enemy.CardDrowEnemy(list2, shuffle);
+                Console.WriteLine($"{SumPointP},{SumPointE}");
 
-            enemy.BJJudge(SumPointP, SumPointE);
-            Initialization.Enabled = true;
-            CardDraw.Enabled = false;
-            CardJudge.Enabled = false;
+                enemy.BJJudge(SumPointP, SumPointE);
+                Initialization.Enabled = true;
+                CardDraw.Enabled = false;
+                CardJudge.Enabled = false;
             }
         }
 
@@ -271,7 +269,7 @@ namespace blackjack
             {
                 BetButton1.Enabled = false;
             }
-            else 
+            else
             {
                 bet++;
                 coin--;
@@ -280,5 +278,4 @@ namespace blackjack
             }
         }
     }
-
 }
