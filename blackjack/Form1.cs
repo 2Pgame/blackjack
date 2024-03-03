@@ -45,11 +45,13 @@ namespace blackjack
             PlayerCard3.Parent = pictureBox0;
             PlayerCard4.Parent = pictureBox0;
             PlayerCard5.Parent = pictureBox0;
+            PlayerCard6.Parent = pictureBox0;
             DealerCard1.Parent = pictureBox0;
             DealerCard2.Parent = pictureBox0;
             DealerCard3.Parent = pictureBox0;
             DealerCard4.Parent = pictureBox0;
             DealerCard5.Parent = pictureBox0;
+            DealerCard6.Parent = pictureBox0;
 
             CrownPictureP.Parent = pictureBox0;
             CrownPictureE.Parent = pictureBox0;
@@ -88,11 +90,13 @@ namespace blackjack
             pictureBoxP.Add(PlayerCard3);
             pictureBoxP.Add(PlayerCard4);
             pictureBoxP.Add(PlayerCard5);
+            pictureBoxP.Add(PlayerCard6);
             pictureBoxE.Add(DealerCard1);
             pictureBoxE.Add(DealerCard2);
             pictureBoxE.Add(DealerCard3);
             pictureBoxE.Add(DealerCard4);
             pictureBoxE.Add(DealerCard5);
+            pictureBoxE.Add(DealerCard6);
         }
         private void ShuffleClicked(object sender, EventArgs e)
         {
