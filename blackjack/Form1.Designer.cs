@@ -70,6 +70,9 @@
             this.Output = new System.Windows.Forms.Button();
             this.Input = new System.Windows.Forms.Button();
             this.Bet10Button = new System.Windows.Forms.Button();
+            this.NameInput = new System.Windows.Forms.Button();
+            this.insurance = new System.Windows.Forms.Button();
+            this.insurance10 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BetButton)).BeginInit();
@@ -444,7 +447,6 @@
             this.BetButton1.TabIndex = 30;
             this.BetButton1.Text = "BET";
             this.BetButton1.UseVisualStyleBackColor = true;
-            this.BetButton1.Visible = false;
             this.BetButton1.Click += new System.EventHandler(this.BetButton1Clicked);
             // 
             // PlayerCard6
@@ -472,7 +474,7 @@
             this.Output.AutoSize = true;
             this.Output.Enabled = false;
             this.Output.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Output.Location = new System.Drawing.Point(1105, 568);
+            this.Output.Location = new System.Drawing.Point(909, 623);
             this.Output.Name = "Output";
             this.Output.Size = new System.Drawing.Size(128, 28);
             this.Output.TabIndex = 33;
@@ -484,7 +486,7 @@
             // 
             this.Input.AutoSize = true;
             this.Input.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Input.Location = new System.Drawing.Point(1256, 568);
+            this.Input.Location = new System.Drawing.Point(1060, 623);
             this.Input.Name = "Input";
             this.Input.Size = new System.Drawing.Size(128, 28);
             this.Input.TabIndex = 34;
@@ -495,15 +497,51 @@
             // Bet10Button
             // 
             this.Bet10Button.AutoSize = true;
-            this.Bet10Button.Enabled = false;
             this.Bet10Button.Location = new System.Drawing.Point(657, 623);
             this.Bet10Button.Name = "Bet10Button";
             this.Bet10Button.Size = new System.Drawing.Size(83, 28);
             this.Bet10Button.TabIndex = 35;
             this.Bet10Button.Text = "BET10";
             this.Bet10Button.UseVisualStyleBackColor = true;
-            this.Bet10Button.Visible = false;
             this.Bet10Button.Click += new System.EventHandler(this.Bet10Button_Click);
+            // 
+            // NameInput
+            // 
+            this.NameInput.AutoSize = true;
+            this.NameInput.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.NameInput.Location = new System.Drawing.Point(784, 623);
+            this.NameInput.Name = "NameInput";
+            this.NameInput.Size = new System.Drawing.Size(102, 30);
+            this.NameInput.TabIndex = 36;
+            this.NameInput.Text = "名前変更";
+            this.NameInput.UseVisualStyleBackColor = true;
+            this.NameInput.Click += new System.EventHandler(this.NameInput_Click);
+            // 
+            // insurance
+            // 
+            this.insurance.AutoSize = true;
+            this.insurance.Enabled = false;
+            this.insurance.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.insurance.Location = new System.Drawing.Point(1102, 568);
+            this.insurance.Name = "insurance";
+            this.insurance.Size = new System.Drawing.Size(124, 28);
+            this.insurance.TabIndex = 37;
+            this.insurance.Text = "insurance1";
+            this.insurance.UseVisualStyleBackColor = true;
+            this.insurance.Click += new System.EventHandler(this.insurance_Click);
+            // 
+            // insurance10
+            // 
+            this.insurance10.AutoSize = true;
+            this.insurance10.Enabled = false;
+            this.insurance10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.insurance10.Location = new System.Drawing.Point(1232, 568);
+            this.insurance10.Name = "insurance10";
+            this.insurance10.Size = new System.Drawing.Size(124, 28);
+            this.insurance10.TabIndex = 38;
+            this.insurance10.Text = "insurance10";
+            this.insurance10.UseVisualStyleBackColor = true;
+            this.insurance10.Click += new System.EventHandler(this.insurance10_Click);
             // 
             // Form1
             // 
@@ -511,6 +549,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
+            this.Controls.Add(this.insurance10);
+            this.Controls.Add(this.insurance);
+            this.Controls.Add(this.NameInput);
             this.Controls.Add(this.Bet10Button);
             this.Controls.Add(this.Input);
             this.Controls.Add(this.Output);
@@ -615,6 +656,9 @@
         private System.Windows.Forms.Button Output;
         private System.Windows.Forms.Button Input;
         private System.Windows.Forms.Button Bet10Button;
+        public System.Windows.Forms.Button NameInput;
+        private System.Windows.Forms.Button insurance;
+        private System.Windows.Forms.Button insurance10;
     }
 }
 

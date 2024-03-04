@@ -59,8 +59,8 @@ namespace blackjack
         }
         public float CardDrowEnemy(List<Card> enemys, List<Card> shuffle)
         {
-            Form1.pictureBoxE[Form1.enemySum-1].Image = null;
-            Form1.pictureBoxE[Form1.enemySum-1].ImageLocation = enemys[Form1.enemySum-1].Address;
+            Form1.pictureBoxE[Form1.enemySum - 1].Image = null;
+            Form1.pictureBoxE[Form1.enemySum - 1].ImageLocation = enemys[Form1.enemySum - 1].Address;
 
             SumPointE = 0;
             foreach (Card enemy in enemys)
@@ -230,98 +230,140 @@ namespace blackjack
 
         public void BJJudge(float sumPoint1, float sumPoint2)
         {
+            if (sumPoint2 == 21.5)
+            {
+                Form1.coin += Form1.insBet * 3;
+                Form1.coinlabel.Text = Form1.coin.ToString();
+                Console.WriteLine(Form1.insBet * 3 + "を獲得しました。");
+            }
+            else
+            {
+                if (sumPoint1 == 21.5)
+                {
+                    if (Form1.bet >= 10)
+                    {
+                        Console.WriteLine("プレイヤーの勝ち");
+                        Form1.CrownPictureP.Visible = true;
+                        Form1.WinOrLoseP.Visible = true;
+                        Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Red;
+                        Form1.WinOrLoseP.Text = "勝ち";
+                        Form1.WinOrLoseE.Visible = true;
+                        Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Blue;
+                        Form1.WinOrLoseE.Text = "負け";
+                        Form1.player.controls.pause();// ポーズ(play()で再開)
+                        if (Form1.bet >= 10)
+                        {
+                            SoundPlayer player1 = new SoundPlayer(@"ファンファーレ.wav");
+                            player1.Play();
+                            Form1.Start2();
+                        }
+                        else
+                        {
+                            SoundPlayer player1 = new SoundPlayer(@"勝ち.wav");
+                            player1.Play();
+                            Form1.Start();
+                        }
 
-            if (sumPoint1 >= 22)
-            {
-                Console.WriteLine("プレイヤーの負け");
-                Form1.WinOrLoseP.Visible = true;
-                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Blue;
-                Form1.WinOrLoseP.Text = "負け";
-                Form1.CrownPictureE.Visible = true;
-                Form1.WinOrLoseE.Visible = true;
-                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Red;
-                Form1.WinOrLoseE.Text = "勝ち";
-                Form1.coinlabel.Text = Form1.coin.ToString();
-            }
-            else if (sumPoint2 >= 22)
-            {
-                Console.WriteLine("プレイヤーの勝ち");
-                Form1.CrownPictureP.Visible = true;
-                Form1.WinOrLoseP.Visible = true;
-                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Red;
-                Form1.WinOrLoseP.Text = "勝ち";
-                Form1.WinOrLoseE.Visible = true;
-                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Blue;
-                Form1.WinOrLoseE.Text = "負け";
-                Form1.player.controls.pause();// ポーズ(play()で再開)
-                Form1.coin += Form1.bet * 2;
-                Form1.coinlabel.Text = Form1.coin.ToString();
-                if (Form1.bet >= 10)
-                {
-                    SoundPlayer player1 = new SoundPlayer(@"ファンファーレ.wav");
-                    player1.Play();
-                    Form1.Start2();
+                        Form1.coin += (int)(Form1.bet * 2.5);
+                        Form1.coinlabel.Text = Form1.coin.ToString();
+                    }
                 }
-                else
+                else if (sumPoint1 >= 22)
                 {
-                    SoundPlayer player1 = new SoundPlayer(@"勝ち.wav");
-                    player1.Play();
-                    Form1.Start();
+                    Console.WriteLine("プレイヤーの負け");
+                    Form1.WinOrLoseP.Visible = true;
+                    Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Blue;
+                    Form1.WinOrLoseP.Text = "負け";
+                    Form1.CrownPictureE.Visible = true;
+                    Form1.WinOrLoseE.Visible = true;
+                    Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Red;
+                    Form1.WinOrLoseE.Text = "勝ち";
+                    Form1.coinlabel.Text = Form1.coin.ToString();
                 }
+                else if (sumPoint2 >= 22)
+                {
+                    Console.WriteLine("プレイヤーの勝ち");
+                    Form1.CrownPictureP.Visible = true;
+                    Form1.WinOrLoseP.Visible = true;
+                    Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Red;
+                    Form1.WinOrLoseP.Text = "勝ち";
+                    Form1.WinOrLoseE.Visible = true;
+                    Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Blue;
+                    Form1.WinOrLoseE.Text = "負け";
+                    Form1.player.controls.pause();// ポーズ(play()で再開)
+                    Form1.coin += Form1.bet * 2;
+                    Form1.coinlabel.Text = Form1.coin.ToString();
+                    if (Form1.bet >= 10)
+                    {
+                        SoundPlayer player1 = new SoundPlayer(@"ファンファーレ.wav");
+                        player1.Play();
+                        Form1.Start2();
+                    }
+                    else
+                    {
+                        SoundPlayer player1 = new SoundPlayer(@"勝ち.wav");
+                        player1.Play();
+                        Form1.Start();
+                    }
 
 
-            }
-            else if (sumPoint1 == sumPoint2)
-            {
-                Console.WriteLine("引き分け");
-                Form1.WinOrLoseP.Visible = true;
-                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Purple;
-                Form1.WinOrLoseP.Text = "引き分け";
-                Form1.WinOrLoseE.Visible = true;
-                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Purple;
-                Form1.WinOrLoseE.Text = "引き分け";
-                Form1.coin += Form1.bet;
-                Form1.coinlabel.Text = Form1.coin.ToString();
-            }
-            else if (sumPoint1 > sumPoint2)
-            {
-                Console.WriteLine("プレイヤーの勝ち");
-                Form1.CrownPictureP.Visible = true;
-                Form1.WinOrLoseP.Visible = true;
-                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Red;
-                Form1.WinOrLoseP.Text = "勝ち";
-                Form1.WinOrLoseE.Visible = true;
-                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Blue;
-                Form1.WinOrLoseE.Text = "負け";
-                Form1.player.controls.pause();// ポーズ(play()で再開)
-                if (Form1.bet >= 10)
-                {
-                    SoundPlayer player1 = new SoundPlayer(@"ファンファーレ.wav");
-                    player1.Play();
-                    Form1.Start2();
                 }
-                else
+                else if (sumPoint1 == sumPoint2)
                 {
-                    SoundPlayer player1 = new SoundPlayer(@"勝ち.wav");
-                    player1.Play();
-                    Form1.Start();
+                    Console.WriteLine("引き分け");
+                    Form1.WinOrLoseP.Visible = true;
+                    Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Purple;
+                    Form1.WinOrLoseP.Text = "引き分け";
+                    Form1.WinOrLoseE.Visible = true;
+                    Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Purple;
+                    Form1.WinOrLoseE.Text = "引き分け";
+                    Form1.coin += Form1.bet;
+                    Form1.coinlabel.Text = Form1.coin.ToString();
                 }
-                Form1.coin += Form1.bet * 2;
-                Form1.coinlabel.Text = Form1.coin.ToString();
+                else if (sumPoint1 > sumPoint2)
+                {
+                    Console.WriteLine("プレイヤーの勝ち");
+                    Form1.CrownPictureP.Visible = true;
+                    Form1.WinOrLoseP.Visible = true;
+                    Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Red;
+                    Form1.WinOrLoseP.Text = "勝ち";
+                    Form1.WinOrLoseE.Visible = true;
+                    Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Blue;
+                    Form1.WinOrLoseE.Text = "負け";
+                    Form1.player.controls.pause();// ポーズ(play()で再開)
+                    if (Form1.bet >= 10)
+                    {
+                        SoundPlayer player1 = new SoundPlayer(@"ファンファーレ.wav");
+                        player1.Play();
+                        Form1.Start2();
+                    }
+                    else
+                    {
+                        SoundPlayer player1 = new SoundPlayer(@"勝ち.wav");
+                        player1.Play();
+                        Form1.Start();
+                    }
+
+                    Form1.coin += Form1.bet * 2;
+                    Form1.coinlabel.Text = Form1.coin.ToString();
+
+                }
+                else if (sumPoint2 > sumPoint1)
+                {
+                    Console.WriteLine("プレイヤーの負け");
+                    Form1.WinOrLoseP.Visible = true;
+                    Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Blue;
+                    Form1.WinOrLoseP.Text = "負け";
+                    Form1.CrownPictureE.Visible = true;
+                    Form1.WinOrLoseE.Visible = true;
+                    Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Red;
+                    Form1.WinOrLoseE.Text = "勝ち";
+                    Form1.coinlabel.Text = Form1.coin.ToString();
+                }
             }
-            else if (sumPoint2 > sumPoint1)
-            {
-                Console.WriteLine("プレイヤーの負け");
-                Form1.WinOrLoseP.Visible = true;
-                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Blue;
-                Form1.WinOrLoseP.Text = "負け";
-                Form1.CrownPictureE.Visible = true;
-                Form1.WinOrLoseE.Visible = true;
-                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Red;
-                Form1.WinOrLoseE.Text = "勝ち";
-                Form1.coinlabel.Text = Form1.coin.ToString();
-            }
+
         }
+
     }
 }
 

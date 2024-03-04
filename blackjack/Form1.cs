@@ -16,6 +16,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
 using System.IO;
+using Microsoft.VisualBasic;
 
 namespace blackjack
 {
@@ -67,6 +68,7 @@ namespace blackjack
             CrownPictureE.Visible = false;
             WinOrLoseP.Visible = false;
             WinOrLoseE.Visible = false;
+            label2.Text = "Player";
 
         }
         List<Card> cards = new List<Card>();
@@ -78,8 +80,9 @@ namespace blackjack
         public int sum = 0;
         public int playerSum;
         public int enemySum;
-        public int coin;
+        public int coin = 10;
         public int bet;
+        public int insBet;
 
 
         public float SumPointP;
@@ -93,27 +96,31 @@ namespace blackjack
         };
         private void NewGameClicked(object sender, EventArgs e)
         {
-            if (coin == 0)
+            if (bet == 0)
             {
-                coin = 10;
-                coinlabel.Text = coin.ToString();
+                MessageBox.Show("最低１枚かけてください");
             }
-            CardCreate();
-            ShuffleCard.Enabled = true;
-            NewGame.Enabled = false;
-            Input.Enabled = false;
-            pictureBoxP.Add(PlayerCard1);
-            pictureBoxP.Add(PlayerCard2);
-            pictureBoxP.Add(PlayerCard3);
-            pictureBoxP.Add(PlayerCard4);
-            pictureBoxP.Add(PlayerCard5);
-            pictureBoxP.Add(PlayerCard6);
-            pictureBoxE.Add(DealerCard1);
-            pictureBoxE.Add(DealerCard2);
-            pictureBoxE.Add(DealerCard3);
-            pictureBoxE.Add(DealerCard4);
-            pictureBoxE.Add(DealerCard5);
-            pictureBoxE.Add(DealerCard6);
+            else
+            {
+                CardCreate();
+                BetButton1.Enabled = false;
+                Bet10Button.Enabled = false;
+                ShuffleCard.Enabled = true;
+                NewGame.Enabled = false;
+                Input.Enabled = false;
+                pictureBoxP.Add(PlayerCard1);
+                pictureBoxP.Add(PlayerCard2);
+                pictureBoxP.Add(PlayerCard3);
+                pictureBoxP.Add(PlayerCard4);
+                pictureBoxP.Add(PlayerCard5);
+                pictureBoxP.Add(PlayerCard6);
+                pictureBoxE.Add(DealerCard1);
+                pictureBoxE.Add(DealerCard2);
+                pictureBoxE.Add(DealerCard3);
+                pictureBoxE.Add(DealerCard4);
+                pictureBoxE.Add(DealerCard5);
+                pictureBoxE.Add(DealerCard6);
+            }
         }
         private void ShuffleClicked(object sender, EventArgs e)
         {
@@ -149,6 +156,7 @@ namespace blackjack
                 card.PointCount(card.Number);
                 //Console.WriteLine($"{card.Suit}{card.Number} {card.Id} {card.Point} {card.Address}");
             }
+
         }
         Random random = new Random();
         void CardShuffle()
@@ -180,6 +188,7 @@ namespace blackjack
 
         private void ReleaseClicked(object sender, EventArgs e)
         {
+            CardCreate();
             list1 = player1.CardDistributePlayer(shuffle);
             list2 = enemy.CardDistributeEnemy(shuffle);
             SumPointE = list2[0].Point;
@@ -192,53 +201,37 @@ namespace blackjack
             CardJudge.Enabled = true;
             CardRelease.Enabled = false;
             player2.Play();
-            BetButton.Enabled = true;
             BetButton1.Visible = true;
-            BetButton1.Enabled = true;
             Bet10Button.Visible = true;
-            if (coin >= 10)
+            if (list2[0].Number == 1)
             {
-                Bet10Button.Enabled = true;
+                insurance.Enabled = true;
+                insurance10.Enabled = true;
             }
-            else
-            {
-                Bet10Button.Enabled = false;
-            }
+
 
         }
 
         private void CardDraw_Click(object sender, EventArgs e)
         {
-            if (bet == 0)
-            {
-                MessageBox.Show("最低１枚かけてください");
-            }
-            else
-            {
-                list1 = player1.CardDrowPlayer(list1, shuffle);
-                SumPointP = player1.CalcPlayer(list1);
-                player2.Play();
-            }
 
+            list1 = player1.CardDrowPlayer(list1, shuffle);
+            SumPointP = player1.CalcPlayer(list1);
+            player2.Play();
         }
 
         private void JudgeClicked(object sender, EventArgs e)
         {
-            if (bet == 0)
-            {
-                MessageBox.Show("最低１枚かけてください");
-            }
-            else
-            {
-                SumPointE = enemy.CardDrowEnemy(list2, shuffle);
-                Console.WriteLine($"{SumPointP},{SumPointE}");
 
-                enemy.BJJudge(SumPointP, SumPointE);
-                Initialization.Enabled = true;
-                CardDraw.Enabled = false;
-                CardJudge.Enabled = false;
-                Output.Enabled = true;
-            }
+            SumPointE = enemy.CardDrowEnemy(list2, shuffle);
+            Console.WriteLine($"{SumPointP},{SumPointE}");
+            enemy.BJJudge(SumPointP, SumPointE);
+            Initialization.Enabled = true;
+            CardDraw.Enabled = false;
+            CardJudge.Enabled = false;
+            Output.Enabled = true;
+            insurance.Enabled = false;
+            insurance10.Enabled = false;
         }
 
         private void Ticked(object sender, EventArgs e)
@@ -296,12 +289,25 @@ namespace blackjack
                 coinlabel.Text = coin.ToString();
             }
             bet = 0;
-            BetButton1.Text = "BET";
-            BetButton1.Visible = false;
-            Bet10Button.Text = "10BET";
-            Bet10Button.Visible = false;
+
             Output.Enabled = false;
             Input.Enabled = true;
+            BetButton1.Text = "BET";
+            BetButton1.Visible = true;
+            BetButton1.Enabled = true;
+            Bet10Button.Text = "10BET";
+            Bet10Button.Visible = true;
+            if (coin >= 10)
+            {
+                Bet10Button.Enabled = true;
+            }
+            else
+            {
+                Bet10Button.Enabled = false;
+            }
+            insurance.Text = "insurance1";
+            insBet = 0;
+            insurance10.Text = "insurance10";
         }
 
 
@@ -316,7 +322,11 @@ namespace blackjack
                 coinlabel.Text = coin.ToString();
                 Bet10Button.Enabled = false;
             }
-
+            else if (coin <= 0)
+            {
+                BetButton1.Enabled = false;
+                Bet10Button.Enabled = false;
+            }
             else
             {
                 bet++;
@@ -325,17 +335,19 @@ namespace blackjack
                 Bet10Button.Text = bet.ToString();
                 coinlabel.Text = coin.ToString();
             }
-            if (coin == 0)
+            if (coin <= 0)
             {
                 BetButton1.Enabled = false;
                 Bet10Button.Enabled = false;
             }
+
         }
 
         private void Output_Click(object sender, EventArgs e)
         {
             NameCoins nameCoins = new NameCoins();
             nameCoins.Coins = coin;
+            nameCoins.Name = label2.Text;
             // オブジェクトからJSON文字列を作成（インデントフォーマットあり）
             string json = JsonSerializer.Serialize(nameCoins, options);
             // ファイルに出力
@@ -358,6 +370,7 @@ namespace blackjack
             {
                 coinlabel.Text = coin.ToString();
             }
+            label2.Text = product.Name;
         }
 
         private void Bet10Button_Click(object sender, EventArgs e)
@@ -369,7 +382,7 @@ namespace blackjack
                 coinlabel.Text = coin.ToString();
                 BetButton1.Text = bet.ToString();
                 Bet10Button.Text = bet.ToString();
-                if (coin < 10) 
+                if (coin < 10)
                 {
                     Bet10Button.Enabled = false;
                 }
@@ -381,14 +394,71 @@ namespace blackjack
 
             else
             {
-                if (coin == 0)
+                if (coin <= 0)
                 {
                     BetButton1.Enabled = false;
                     Bet10Button.Enabled = false;
                 }
-                else 
+                else
                 {
-                Bet10Button.Enabled = false;
+                    Bet10Button.Enabled = false;
+                }
+            }
+            if (coin <= 0)
+            {
+                BetButton1.Enabled = false;
+            }
+        }
+
+        private void NameInput_Click(object sender, EventArgs e)
+        {
+            string str = Microsoft.VisualBasic.Interaction.InputBox("", "名前入力", "名前を入力してください", -1, -1);
+            label2.Text = str;
+        }
+
+        private void insurance_Click(object sender, EventArgs e)
+        {
+            if (insBet + 1 > bet / 2)
+            {
+                MessageBox.Show("賭けることができません");
+            }
+            else
+            {
+                if (coin > 0)
+                {
+                    insBet++;
+                    coin--;
+                    coinlabel.Text = coin.ToString();
+                    insurance.Text = insBet.ToString();
+                    insurance10.Text = insBet.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("コインがありません");
+                }
+            }
+        }
+
+        private void insurance10_Click(object sender, EventArgs e)
+        {
+            if (insBet + 10 > bet / 2)
+            {
+                MessageBox.Show("賭けることができません");
+            }
+            else
+            {
+
+                if (coin > 9)
+                {
+                    insBet += 10;
+                    coin -= 10;
+                    coinlabel.Text = coin.ToString();
+                    insurance.Text = insBet.ToString();
+                    insurance10.Text = insBet.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("コインがありません");
                 }
             }
         }
@@ -396,5 +466,6 @@ namespace blackjack
     class NameCoins
     {
         public int Coins { get; set; }
+        public string Name { get; set; }
     }
 }
