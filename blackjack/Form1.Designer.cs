@@ -69,6 +69,7 @@
             this.DealerCard6 = new System.Windows.Forms.PictureBox();
             this.Output = new System.Windows.Forms.Button();
             this.Input = new System.Windows.Forms.Button();
+            this.Bet10Button = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BetButton)).BeginInit();
@@ -320,7 +321,7 @@
             this.CardJudge.AutoSize = true;
             this.CardJudge.Enabled = false;
             this.CardJudge.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.CardJudge.Location = new System.Drawing.Point(917, 568);
+            this.CardJudge.Location = new System.Drawing.Point(909, 568);
             this.CardJudge.Name = "CardJudge";
             this.CardJudge.Size = new System.Drawing.Size(75, 28);
             this.CardJudge.TabIndex = 20;
@@ -361,7 +362,7 @@
             this.Initialization.AutoSize = true;
             this.Initialization.Enabled = false;
             this.Initialization.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Initialization.Location = new System.Drawing.Point(1018, 568);
+            this.Initialization.Location = new System.Drawing.Point(1007, 568);
             this.Initialization.Name = "Initialization";
             this.Initialization.Size = new System.Drawing.Size(75, 28);
             this.Initialization.TabIndex = 23;
@@ -469,8 +470,9 @@
             // Output
             // 
             this.Output.AutoSize = true;
+            this.Output.Enabled = false;
             this.Output.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Output.Location = new System.Drawing.Point(1113, 568);
+            this.Output.Location = new System.Drawing.Point(1105, 568);
             this.Output.Name = "Output";
             this.Output.Size = new System.Drawing.Size(128, 28);
             this.Output.TabIndex = 33;
@@ -482,7 +484,7 @@
             // 
             this.Input.AutoSize = true;
             this.Input.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Input.Location = new System.Drawing.Point(1257, 568);
+            this.Input.Location = new System.Drawing.Point(1256, 568);
             this.Input.Name = "Input";
             this.Input.Size = new System.Drawing.Size(128, 28);
             this.Input.TabIndex = 34;
@@ -490,12 +492,26 @@
             this.Input.UseVisualStyleBackColor = true;
             this.Input.Click += new System.EventHandler(this.Input_Click);
             // 
+            // Bet10Button
+            // 
+            this.Bet10Button.AutoSize = true;
+            this.Bet10Button.Enabled = false;
+            this.Bet10Button.Location = new System.Drawing.Point(657, 623);
+            this.Bet10Button.Name = "Bet10Button";
+            this.Bet10Button.Size = new System.Drawing.Size(83, 28);
+            this.Bet10Button.TabIndex = 35;
+            this.Bet10Button.Text = "BET10";
+            this.Bet10Button.UseVisualStyleBackColor = true;
+            this.Bet10Button.Visible = false;
+            this.Bet10Button.Click += new System.EventHandler(this.Bet10Button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
+            this.Controls.Add(this.Bet10Button);
             this.Controls.Add(this.Input);
             this.Controls.Add(this.Output);
             this.Controls.Add(this.PlayerCard6);
@@ -598,6 +614,7 @@
         private System.Windows.Forms.PictureBox DealerCard6;
         private System.Windows.Forms.Button Output;
         private System.Windows.Forms.Button Input;
+        private System.Windows.Forms.Button Bet10Button;
     }
 }
 
