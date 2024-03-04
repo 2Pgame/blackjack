@@ -101,6 +101,7 @@ namespace blackjack
             CardCreate();
             ShuffleCard.Enabled = true;
             NewGame.Enabled = false;
+            Input.Enabled = false;
             pictureBoxP.Add(PlayerCard1);
             pictureBoxP.Add(PlayerCard2);
             pictureBoxP.Add(PlayerCard3);
@@ -194,6 +195,15 @@ namespace blackjack
             BetButton.Enabled = true;
             BetButton1.Visible = true;
             BetButton1.Enabled = true;
+            Bet10Button.Visible = true;
+            if (coin >= 10)
+            {
+                Bet10Button.Enabled = true;
+            }
+            else
+            {
+                Bet10Button.Enabled = false;
+            }
 
         }
 
@@ -227,6 +237,7 @@ namespace blackjack
                 Initialization.Enabled = true;
                 CardDraw.Enabled = false;
                 CardJudge.Enabled = false;
+                Output.Enabled = true;
             }
         }
 
@@ -287,21 +298,37 @@ namespace blackjack
             bet = 0;
             BetButton1.Text = "BET";
             BetButton1.Visible = false;
+            Bet10Button.Text = "10BET";
+            Bet10Button.Visible = false;
+            Output.Enabled = false;
+            Input.Enabled = true;
         }
 
 
         private void BetButton1Clicked(object sender, EventArgs e)
         {
-            if (coin == 0)
+            if (coin < 10 && 0 < coin)
             {
-                BetButton1.Enabled = false;
+                bet++;
+                coin--;
+                BetButton1.Text = bet.ToString();
+                Bet10Button.Text = bet.ToString();
+                coinlabel.Text = coin.ToString();
+                Bet10Button.Enabled = false;
             }
+
             else
             {
                 bet++;
                 coin--;
                 BetButton1.Text = bet.ToString();
+                Bet10Button.Text = bet.ToString();
                 coinlabel.Text = coin.ToString();
+            }
+            if (coin == 0)
+            {
+                BetButton1.Enabled = false;
+                Bet10Button.Enabled = false;
             }
         }
 
@@ -330,6 +357,39 @@ namespace blackjack
             else
             {
                 coinlabel.Text = coin.ToString();
+            }
+        }
+
+        private void Bet10Button_Click(object sender, EventArgs e)
+        {
+            if (coin >= 10)
+            {
+                coin -= 10;
+                bet += 10;
+                coinlabel.Text = coin.ToString();
+                BetButton1.Text = bet.ToString();
+                Bet10Button.Text = bet.ToString();
+                if (coin < 10) 
+                {
+                    Bet10Button.Enabled = false;
+                }
+                else if (coin == 0)
+                {
+                    BetButton1.Enabled = false;
+                }
+            }
+
+            else
+            {
+                if (coin == 0)
+                {
+                    BetButton1.Enabled = false;
+                    Bet10Button.Enabled = false;
+                }
+                else 
+                {
+                Bet10Button.Enabled = false;
+                }
             }
         }
     }
