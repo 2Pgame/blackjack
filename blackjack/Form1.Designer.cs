@@ -70,6 +70,7 @@
             this.Output = new System.Windows.Forms.Button();
             this.Input = new System.Windows.Forms.Button();
             this.Bet10Button = new System.Windows.Forms.Button();
+            this.NameInput = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BetButton)).BeginInit();
@@ -99,7 +100,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1898, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(1898, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -111,7 +112,7 @@
             this.CardRelease,
             this.ゲーム終了ToolStripMenuItem});
             this.ゲームToolStripMenuItem.Name = "ゲームToolStripMenuItem";
-            this.ゲームToolStripMenuItem.Size = new System.Drawing.Size(68, 32);
+            this.ゲームToolStripMenuItem.Size = new System.Drawing.Size(68, 29);
             this.ゲームToolStripMenuItem.Text = "ゲーム";
             // 
             // NewGame
@@ -149,7 +150,7 @@
             this.ヘルプToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.version});
             this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
-            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(72, 32);
+            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(72, 29);
             this.ヘルプToolStripMenuItem.Text = "ヘルプ";
             // 
             // version
@@ -472,7 +473,7 @@
             this.Output.AutoSize = true;
             this.Output.Enabled = false;
             this.Output.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Output.Location = new System.Drawing.Point(1105, 568);
+            this.Output.Location = new System.Drawing.Point(909, 623);
             this.Output.Name = "Output";
             this.Output.Size = new System.Drawing.Size(128, 28);
             this.Output.TabIndex = 33;
@@ -484,7 +485,7 @@
             // 
             this.Input.AutoSize = true;
             this.Input.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Input.Location = new System.Drawing.Point(1256, 568);
+            this.Input.Location = new System.Drawing.Point(1060, 623);
             this.Input.Name = "Input";
             this.Input.Size = new System.Drawing.Size(128, 28);
             this.Input.TabIndex = 34;
@@ -505,12 +506,25 @@
             this.Bet10Button.Visible = false;
             this.Bet10Button.Click += new System.EventHandler(this.Bet10Button_Click);
             // 
+            // NameInput
+            // 
+            this.NameInput.AutoSize = true;
+            this.NameInput.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.NameInput.Location = new System.Drawing.Point(784, 623);
+            this.NameInput.Name = "NameInput";
+            this.NameInput.Size = new System.Drawing.Size(102, 30);
+            this.NameInput.TabIndex = 36;
+            this.NameInput.Text = "名前変更";
+            this.NameInput.UseVisualStyleBackColor = true;
+            this.NameInput.Click += new System.EventHandler(this.NameInput_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
+            this.Controls.Add(this.NameInput);
             this.Controls.Add(this.Bet10Button);
             this.Controls.Add(this.Input);
             this.Controls.Add(this.Output);
@@ -615,6 +629,7 @@
         private System.Windows.Forms.Button Output;
         private System.Windows.Forms.Button Input;
         private System.Windows.Forms.Button Bet10Button;
+        public System.Windows.Forms.Button NameInput;
     }
 }
 

@@ -16,6 +16,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
 using System.IO;
+using Microsoft.VisualBasic;
 
 namespace blackjack
 {
@@ -67,6 +68,7 @@ namespace blackjack
             CrownPictureE.Visible = false;
             WinOrLoseP.Visible = false;
             WinOrLoseE.Visible = false;
+            label2.Text = "Player";
 
         }
         List<Card> cards = new List<Card>();
@@ -336,6 +338,7 @@ namespace blackjack
         {
             NameCoins nameCoins = new NameCoins();
             nameCoins.Coins = coin;
+            nameCoins.Name = label2.Text;
             // オブジェクトからJSON文字列を作成（インデントフォーマットあり）
             string json = JsonSerializer.Serialize(nameCoins, options);
             // ファイルに出力
@@ -358,6 +361,7 @@ namespace blackjack
             {
                 coinlabel.Text = coin.ToString();
             }
+            label2.Text = product.Name;
         }
 
         private void Bet10Button_Click(object sender, EventArgs e)
@@ -369,7 +373,7 @@ namespace blackjack
                 coinlabel.Text = coin.ToString();
                 BetButton1.Text = bet.ToString();
                 Bet10Button.Text = bet.ToString();
-                if (coin < 10) 
+                if (coin < 10)
                 {
                     Bet10Button.Enabled = false;
                 }
@@ -386,15 +390,22 @@ namespace blackjack
                     BetButton1.Enabled = false;
                     Bet10Button.Enabled = false;
                 }
-                else 
+                else
                 {
-                Bet10Button.Enabled = false;
+                    Bet10Button.Enabled = false;
                 }
             }
+        }
+
+        private void NameInput_Click(object sender, EventArgs e)
+        {
+            string str = Microsoft.VisualBasic.Interaction.InputBox("", "名前入力", "名前を入力してください", -1, -1);
+            label2.Text = str;
         }
     }
     class NameCoins
     {
         public int Coins { get; set; }
+        public string Name { get; set; }
     }
 }
