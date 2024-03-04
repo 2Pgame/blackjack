@@ -12,6 +12,10 @@ using WMPLib;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
+using System.IO;
 
 namespace blackjack
 {
@@ -63,6 +67,7 @@ namespace blackjack
             CrownPictureE.Visible = false;
             WinOrLoseP.Visible = false;
             WinOrLoseE.Visible = false;
+
         }
         List<Card> cards = new List<Card>();
         List<Card> shuffle = new List<Card>();
@@ -73,15 +78,26 @@ namespace blackjack
         public int sum = 0;
         public int playerSum;
         public int enemySum;
-        public int coin = 10;
+        public int coin;
         public int bet;
 
 
         public float SumPointP;
         private float SumPointE;
-
+        JsonSerializerOptions options = new JsonSerializerOptions
+        {
+            // 日本語が表示できるようにする
+            Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+            // インデントフォーマットあり
+            WriteIndented = true
+        };
         private void NewGameClicked(object sender, EventArgs e)
         {
+            if (coin == 0)
+            {
+                coin = 10;
+                coinlabel.Text = coin.ToString();
+            }
             CardCreate();
             ShuffleCard.Enabled = true;
             NewGame.Enabled = false;
@@ -178,6 +194,7 @@ namespace blackjack
             BetButton.Enabled = true;
             BetButton1.Visible = true;
             BetButton1.Enabled = true;
+
         }
 
         private void CardDraw_Click(object sender, EventArgs e)
@@ -270,7 +287,6 @@ namespace blackjack
             bet = 0;
             BetButton1.Text = "BET";
             BetButton1.Visible = false;
-
         }
 
 
@@ -288,5 +304,37 @@ namespace blackjack
                 coinlabel.Text = coin.ToString();
             }
         }
+
+        private void Output_Click(object sender, EventArgs e)
+        {
+            NameCoins nameCoins = new NameCoins();
+            nameCoins.Coins = coin;
+            // オブジェクトからJSON文字列を作成（インデントフォーマットあり）
+            string json = JsonSerializer.Serialize(nameCoins, options);
+            // ファイルに出力
+            File.WriteAllText("propaty.json", json);
+        }
+
+        private void Input_Click(object sender, EventArgs e)
+        {
+            string json = File.ReadAllText("propaty.json");
+
+            NameCoins product = JsonSerializer.Deserialize<NameCoins>(json);
+
+            coin = product.Coins;
+            if (coin == 0)
+            {
+                coin = 10;
+                coinlabel.Text = coin.ToString();
+            }
+            else
+            {
+                coinlabel.Text = coin.ToString();
+            }
+        }
+    }
+    class NameCoins
+    {
+        public int Coins { get; set; }
     }
 }
