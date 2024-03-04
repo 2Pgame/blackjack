@@ -58,7 +58,7 @@ namespace blackjack
             }
             else
             {
-               
+
             }
 
             return player2;
@@ -94,7 +94,7 @@ namespace blackjack
             {
                 Form1.PlayerPoint.Text = SumPointP.ToString();
             }
-            else 
+            else
             {
                 Form1.PlayerPoint.Text = "Burst";
             }
@@ -145,6 +145,7 @@ namespace blackjack
         }
         public void AToChange(List<Card> list1)
         {
+            SumPointP = 0;
             foreach (Card card in list1)
             {
                 SumPointP += card.Point;
