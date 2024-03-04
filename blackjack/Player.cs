@@ -143,8 +143,12 @@ namespace blackjack
 
             return SumPointP;
         }
-        void AToChange(List<Card> list1)
+        public void AToChange(List<Card> list1)
         {
+            foreach (Card card in list1)
+            {
+                SumPointP += card.Point;
+            }
             if (SumPointP >= 22)
             {
                 foreach (var card in list1)

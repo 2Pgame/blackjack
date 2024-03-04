@@ -59,8 +59,8 @@ namespace blackjack
         }
         public float CardDrowEnemy(List<Card> enemys, List<Card> shuffle)
         {
-            Form1.pictureBoxE[1].Image = null;
-            Form1.pictureBoxE[1].ImageLocation = enemys[1].Address;
+            Form1.pictureBoxE[Form1.enemySum-1].Image = null;
+            Form1.pictureBoxE[Form1.enemySum-1].ImageLocation = enemys[Form1.enemySum-1].Address;
 
             SumPointE = 0;
             foreach (Card enemy in enemys)
