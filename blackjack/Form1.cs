@@ -197,6 +197,10 @@ namespace blackjack
             list2 = enemy.CardDistributeEnemy(shuffle);
             pictureBoxE[enemySum - 1].ImageLocation = "image\\53.png";
             SumPointP = player1.CalcPlayerFirst(list1);
+            if (SumPointP <= 20)
+            {
+                doubleDown.Enabled = true;
+            }
             CardDraw.Enabled = true;
             CardJudge.Enabled = true;
             CardRelease.Enabled = false;
@@ -214,10 +218,19 @@ namespace blackjack
 
         private void CardDraw_Click(object sender, EventArgs e)
         {
-
+            if (doubleDown.Enabled)
+            {
+                list1 = player1.CardDrowPlayer(list1, shuffle);
+                SumPointP = player1.CalcPlayer(list1);
+                CardDraw.Enabled = false;
+            }
+            else
+            {
             list1 = player1.CardDrowPlayer(list1, shuffle);
             SumPointP = player1.CalcPlayer(list1);
             player2.Play();
+            doubleDown.Enabled = false;
+            }
         }
 
         private void JudgeClicked(object sender, EventArgs e)
@@ -232,6 +245,7 @@ namespace blackjack
             Output.Enabled = true;
             insurance.Enabled = false;
             insurance10.Enabled = false;
+
         }
 
         private void Ticked(object sender, EventArgs e)
@@ -460,6 +474,22 @@ namespace blackjack
                 {
                     MessageBox.Show("コインがありません");
                 }
+            }
+        }
+
+        private void doubleDown_Click(object sender, EventArgs e)
+        {
+            if (bet < coin)
+            {
+                bet += bet;
+                coin -= bet / 2;
+                coinlabel.Text = coin.ToString();
+                BetButton1.Text = bet.ToString();
+                Bet10Button.Text = bet.ToString();
+            }
+            else
+            {
+                MessageBox.Show("コインが足りません");
             }
         }
     }

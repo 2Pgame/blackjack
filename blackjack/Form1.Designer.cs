@@ -73,6 +73,7 @@
             this.NameInput = new System.Windows.Forms.Button();
             this.insurance = new System.Windows.Forms.Button();
             this.insurance10 = new System.Windows.Forms.Button();
+            this.doubleDown = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BetButton)).BeginInit();
@@ -474,7 +475,7 @@
             this.Output.AutoSize = true;
             this.Output.Enabled = false;
             this.Output.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Output.Location = new System.Drawing.Point(909, 623);
+            this.Output.Location = new System.Drawing.Point(907, 623);
             this.Output.Name = "Output";
             this.Output.Size = new System.Drawing.Size(128, 28);
             this.Output.TabIndex = 33;
@@ -486,7 +487,7 @@
             // 
             this.Input.AutoSize = true;
             this.Input.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Input.Location = new System.Drawing.Point(1060, 623);
+            this.Input.Location = new System.Drawing.Point(1056, 623);
             this.Input.Name = "Input";
             this.Input.Size = new System.Drawing.Size(128, 28);
             this.Input.TabIndex = 34;
@@ -543,12 +544,26 @@
             this.insurance10.UseVisualStyleBackColor = true;
             this.insurance10.Click += new System.EventHandler(this.insurance10_Click);
             // 
+            // doubleDown
+            // 
+            this.doubleDown.AutoSize = true;
+            this.doubleDown.Enabled = false;
+            this.doubleDown.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.doubleDown.Location = new System.Drawing.Point(1205, 623);
+            this.doubleDown.Name = "doubleDown";
+            this.doubleDown.Size = new System.Drawing.Size(128, 28);
+            this.doubleDown.TabIndex = 39;
+            this.doubleDown.Text = "ダブル";
+            this.doubleDown.UseVisualStyleBackColor = true;
+            this.doubleDown.Click += new System.EventHandler(this.doubleDown_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
+            this.Controls.Add(this.doubleDown);
             this.Controls.Add(this.insurance10);
             this.Controls.Add(this.insurance);
             this.Controls.Add(this.NameInput);
@@ -659,6 +674,7 @@
         public System.Windows.Forms.Button NameInput;
         private System.Windows.Forms.Button insurance;
         private System.Windows.Forms.Button insurance10;
+        private System.Windows.Forms.Button doubleDown;
     }
 }
 
