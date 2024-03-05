@@ -74,6 +74,16 @@
             this.insurance = new System.Windows.Forms.Button();
             this.insurance10 = new System.Windows.Forms.Button();
             this.doubleDown = new System.Windows.Forms.Button();
+            this.surrender = new System.Windows.Forms.Button();
+            this.split = new System.Windows.Forms.Button();
+            this.SplitBetButton = new System.Windows.Forms.Button();
+            this.Split1Draw1 = new System.Windows.Forms.Button();
+            this.SplitDraw2 = new System.Windows.Forms.Button();
+            this.PlayerPoint3 = new System.Windows.Forms.Label();
+            this.Split2Judge = new System.Windows.Forms.Button();
+            this.Split1Judge = new System.Windows.Forms.Button();
+            this.SplitPoint1 = new System.Windows.Forms.Label();
+            this.SplitPoint2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BetButton)).BeginInit();
@@ -103,7 +113,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1898, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(1898, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -115,7 +125,7 @@
             this.CardRelease,
             this.ゲーム終了ToolStripMenuItem});
             this.ゲームToolStripMenuItem.Name = "ゲームToolStripMenuItem";
-            this.ゲームToolStripMenuItem.Size = new System.Drawing.Size(68, 32);
+            this.ゲームToolStripMenuItem.Size = new System.Drawing.Size(68, 29);
             this.ゲームToolStripMenuItem.Text = "ゲーム";
             // 
             // NewGame
@@ -153,7 +163,7 @@
             this.ヘルプToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.version});
             this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
-            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(72, 32);
+            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(72, 29);
             this.ヘルプToolStripMenuItem.Text = "ヘルプ";
             // 
             // version
@@ -177,7 +187,7 @@
             // 
             this.BetButton.BackColor = System.Drawing.Color.Transparent;
             this.BetButton.Enabled = false;
-            this.BetButton.Location = new System.Drawing.Point(657, 535);
+            this.BetButton.Location = new System.Drawing.Point(783, 534);
             this.BetButton.Name = "BetButton";
             this.BetButton.Size = new System.Drawing.Size(83, 91);
             this.BetButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -312,7 +322,7 @@
             this.CardDraw.AutoSize = true;
             this.CardDraw.Enabled = false;
             this.CardDraw.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.CardDraw.Location = new System.Drawing.Point(784, 568);
+            this.CardDraw.Location = new System.Drawing.Point(433, 568);
             this.CardDraw.Name = "CardDraw";
             this.CardDraw.Size = new System.Drawing.Size(102, 30);
             this.CardDraw.TabIndex = 19;
@@ -325,7 +335,7 @@
             this.CardJudge.AutoSize = true;
             this.CardJudge.Enabled = false;
             this.CardJudge.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.CardJudge.Location = new System.Drawing.Point(909, 568);
+            this.CardJudge.Location = new System.Drawing.Point(558, 568);
             this.CardJudge.Name = "CardJudge";
             this.CardJudge.Size = new System.Drawing.Size(75, 28);
             this.CardJudge.TabIndex = 20;
@@ -366,7 +376,7 @@
             this.Initialization.AutoSize = true;
             this.Initialization.Enabled = false;
             this.Initialization.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Initialization.Location = new System.Drawing.Point(1007, 568);
+            this.Initialization.Location = new System.Drawing.Point(433, 622);
             this.Initialization.Name = "Initialization";
             this.Initialization.Size = new System.Drawing.Size(75, 28);
             this.Initialization.TabIndex = 23;
@@ -422,7 +432,7 @@
             // 
             this.rest.AutoSize = true;
             this.rest.BackColor = System.Drawing.Color.Transparent;
-            this.rest.Location = new System.Drawing.Point(547, 574);
+            this.rest.Location = new System.Drawing.Point(673, 573);
             this.rest.Name = "rest";
             this.rest.Size = new System.Drawing.Size(37, 18);
             this.rest.TabIndex = 28;
@@ -432,7 +442,7 @@
             // 
             this.coinlabel.AutoSize = true;
             this.coinlabel.BackColor = System.Drawing.Color.Transparent;
-            this.coinlabel.Location = new System.Drawing.Point(590, 574);
+            this.coinlabel.Location = new System.Drawing.Point(716, 573);
             this.coinlabel.Name = "coinlabel";
             this.coinlabel.Size = new System.Drawing.Size(26, 18);
             this.coinlabel.TabIndex = 29;
@@ -442,7 +452,7 @@
             // BetButton1
             // 
             this.BetButton1.AutoSize = true;
-            this.BetButton1.Location = new System.Drawing.Point(657, 568);
+            this.BetButton1.Location = new System.Drawing.Point(783, 567);
             this.BetButton1.Name = "BetButton1";
             this.BetButton1.Size = new System.Drawing.Size(83, 28);
             this.BetButton1.TabIndex = 30;
@@ -475,7 +485,7 @@
             this.Output.AutoSize = true;
             this.Output.Enabled = false;
             this.Output.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Output.Location = new System.Drawing.Point(907, 623);
+            this.Output.Location = new System.Drawing.Point(1033, 622);
             this.Output.Name = "Output";
             this.Output.Size = new System.Drawing.Size(128, 28);
             this.Output.TabIndex = 33;
@@ -487,7 +497,7 @@
             // 
             this.Input.AutoSize = true;
             this.Input.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Input.Location = new System.Drawing.Point(1056, 623);
+            this.Input.Location = new System.Drawing.Point(1182, 622);
             this.Input.Name = "Input";
             this.Input.Size = new System.Drawing.Size(128, 28);
             this.Input.TabIndex = 34;
@@ -498,7 +508,7 @@
             // Bet10Button
             // 
             this.Bet10Button.AutoSize = true;
-            this.Bet10Button.Location = new System.Drawing.Point(657, 623);
+            this.Bet10Button.Location = new System.Drawing.Point(783, 622);
             this.Bet10Button.Name = "Bet10Button";
             this.Bet10Button.Size = new System.Drawing.Size(83, 28);
             this.Bet10Button.TabIndex = 35;
@@ -510,7 +520,7 @@
             // 
             this.NameInput.AutoSize = true;
             this.NameInput.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.NameInput.Location = new System.Drawing.Point(784, 623);
+            this.NameInput.Location = new System.Drawing.Point(910, 622);
             this.NameInput.Name = "NameInput";
             this.NameInput.Size = new System.Drawing.Size(102, 30);
             this.NameInput.TabIndex = 36;
@@ -523,7 +533,7 @@
             this.insurance.AutoSize = true;
             this.insurance.Enabled = false;
             this.insurance.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.insurance.Location = new System.Drawing.Point(1102, 568);
+            this.insurance.Location = new System.Drawing.Point(907, 563);
             this.insurance.Name = "insurance";
             this.insurance.Size = new System.Drawing.Size(124, 28);
             this.insurance.TabIndex = 37;
@@ -536,7 +546,7 @@
             this.insurance10.AutoSize = true;
             this.insurance10.Enabled = false;
             this.insurance10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.insurance10.Location = new System.Drawing.Point(1232, 568);
+            this.insurance10.Location = new System.Drawing.Point(1037, 563);
             this.insurance10.Name = "insurance10";
             this.insurance10.Size = new System.Drawing.Size(124, 28);
             this.insurance10.TabIndex = 38;
@@ -549,7 +559,7 @@
             this.doubleDown.AutoSize = true;
             this.doubleDown.Enabled = false;
             this.doubleDown.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.doubleDown.Location = new System.Drawing.Point(1205, 623);
+            this.doubleDown.Location = new System.Drawing.Point(1167, 563);
             this.doubleDown.Name = "doubleDown";
             this.doubleDown.Size = new System.Drawing.Size(128, 28);
             this.doubleDown.TabIndex = 39;
@@ -557,12 +567,147 @@
             this.doubleDown.UseVisualStyleBackColor = true;
             this.doubleDown.Click += new System.EventHandler(this.doubleDown_Click);
             // 
+            // surrender
+            // 
+            this.surrender.AutoSize = true;
+            this.surrender.Enabled = false;
+            this.surrender.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.surrender.Location = new System.Drawing.Point(531, 622);
+            this.surrender.Name = "surrender";
+            this.surrender.Size = new System.Drawing.Size(102, 30);
+            this.surrender.TabIndex = 40;
+            this.surrender.Text = "降参";
+            this.surrender.UseVisualStyleBackColor = true;
+            this.surrender.Click += new System.EventHandler(this.surrender_Click);
+            // 
+            // split
+            // 
+            this.split.AutoSize = true;
+            this.split.Enabled = false;
+            this.split.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.split.Location = new System.Drawing.Point(1303, 561);
+            this.split.Name = "split";
+            this.split.Size = new System.Drawing.Size(102, 30);
+            this.split.TabIndex = 41;
+            this.split.Text = "スプリット";
+            this.split.UseVisualStyleBackColor = true;
+            this.split.Click += new System.EventHandler(this.split_Click);
+            // 
+            // SplitBetButton
+            // 
+            this.SplitBetButton.AutoSize = true;
+            this.SplitBetButton.Enabled = false;
+            this.SplitBetButton.Location = new System.Drawing.Point(984, 534);
+            this.SplitBetButton.Name = "SplitBetButton";
+            this.SplitBetButton.Size = new System.Drawing.Size(112, 28);
+            this.SplitBetButton.TabIndex = 42;
+            this.SplitBetButton.Text = "スプリットBET";
+            this.SplitBetButton.UseVisualStyleBackColor = true;
+            // 
+            // Split1Draw1
+            // 
+            this.Split1Draw1.AutoSize = true;
+            this.Split1Draw1.Enabled = false;
+            this.Split1Draw1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Split1Draw1.Location = new System.Drawing.Point(433, 673);
+            this.Split1Draw1.Name = "Split1Draw1";
+            this.Split1Draw1.Size = new System.Drawing.Size(130, 30);
+            this.Split1Draw1.TabIndex = 43;
+            this.Split1Draw1.Text = "スプリット1ドロー";
+            this.Split1Draw1.UseVisualStyleBackColor = true;
+            this.Split1Draw1.Click += new System.EventHandler(this.Split1Draw1_Click);
+            // 
+            // SplitDraw2
+            // 
+            this.SplitDraw2.AutoSize = true;
+            this.SplitDraw2.Enabled = false;
+            this.SplitDraw2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SplitDraw2.Location = new System.Drawing.Point(582, 673);
+            this.SplitDraw2.Name = "SplitDraw2";
+            this.SplitDraw2.Size = new System.Drawing.Size(130, 30);
+            this.SplitDraw2.TabIndex = 44;
+            this.SplitDraw2.Text = "スプリット2ドロー";
+            this.SplitDraw2.UseVisualStyleBackColor = true;
+            this.SplitDraw2.Click += new System.EventHandler(this.Split1Draw2_Click);
+            // 
+            // PlayerPoint3
+            // 
+            this.PlayerPoint3.BackColor = System.Drawing.Color.Transparent;
+            this.PlayerPoint3.Font = new System.Drawing.Font("Palatino Linotype", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayerPoint3.ForeColor = System.Drawing.Color.Red;
+            this.PlayerPoint3.Location = new System.Drawing.Point(1447, 328);
+            this.PlayerPoint3.Name = "PlayerPoint3";
+            this.PlayerPoint3.Size = new System.Drawing.Size(229, 192);
+            this.PlayerPoint3.TabIndex = 45;
+            this.PlayerPoint3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Split2Judge
+            // 
+            this.Split2Judge.AutoSize = true;
+            this.Split2Judge.Enabled = false;
+            this.Split2Judge.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Split2Judge.Location = new System.Drawing.Point(582, 709);
+            this.Split2Judge.Name = "Split2Judge";
+            this.Split2Judge.Size = new System.Drawing.Size(130, 30);
+            this.Split2Judge.TabIndex = 47;
+            this.Split2Judge.Text = "スプリット2勝負";
+            this.Split2Judge.UseVisualStyleBackColor = true;
+            this.Split2Judge.Click += new System.EventHandler(this.Split2Judge_Click);
+            // 
+            // Split1Judge
+            // 
+            this.Split1Judge.AutoSize = true;
+            this.Split1Judge.Enabled = false;
+            this.Split1Judge.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Split1Judge.Location = new System.Drawing.Point(433, 709);
+            this.Split1Judge.Name = "Split1Judge";
+            this.Split1Judge.Size = new System.Drawing.Size(130, 30);
+            this.Split1Judge.TabIndex = 46;
+            this.Split1Judge.Text = "スプリット1勝負";
+            this.Split1Judge.UseVisualStyleBackColor = true;
+            this.Split1Judge.Click += new System.EventHandler(this.Split1Judge_Click);
+            // 
+            // SplitPoint1
+            // 
+            this.SplitPoint1.BackColor = System.Drawing.Color.Transparent;
+            this.SplitPoint1.Font = new System.Drawing.Font("Palatino Linotype", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SplitPoint1.ForeColor = System.Drawing.Color.Red;
+            this.SplitPoint1.Location = new System.Drawing.Point(240, 364);
+            this.SplitPoint1.Name = "SplitPoint1";
+            this.SplitPoint1.Size = new System.Drawing.Size(229, 192);
+            this.SplitPoint1.TabIndex = 48;
+            this.SplitPoint1.Text = "0";
+            this.SplitPoint1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SplitPoint1.Visible = false;
+            // 
+            // SplitPoint2
+            // 
+            this.SplitPoint2.BackColor = System.Drawing.Color.Transparent;
+            this.SplitPoint2.Font = new System.Drawing.Font("Palatino Linotype", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SplitPoint2.ForeColor = System.Drawing.Color.Red;
+            this.SplitPoint2.Location = new System.Drawing.Point(1463, 364);
+            this.SplitPoint2.Name = "SplitPoint2";
+            this.SplitPoint2.Size = new System.Drawing.Size(229, 192);
+            this.SplitPoint2.TabIndex = 49;
+            this.SplitPoint2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SplitPoint2.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
+            this.Controls.Add(this.SplitPoint2);
+            this.Controls.Add(this.SplitPoint1);
+            this.Controls.Add(this.Split2Judge);
+            this.Controls.Add(this.Split1Judge);
+            this.Controls.Add(this.PlayerPoint3);
+            this.Controls.Add(this.SplitDraw2);
+            this.Controls.Add(this.Split1Draw1);
+            this.Controls.Add(this.SplitBetButton);
+            this.Controls.Add(this.split);
+            this.Controls.Add(this.surrender);
             this.Controls.Add(this.doubleDown);
             this.Controls.Add(this.insurance10);
             this.Controls.Add(this.insurance);
@@ -675,6 +820,16 @@
         private System.Windows.Forms.Button insurance;
         private System.Windows.Forms.Button insurance10;
         private System.Windows.Forms.Button doubleDown;
+        public System.Windows.Forms.Button surrender;
+        public System.Windows.Forms.Button split;
+        private System.Windows.Forms.Button SplitBetButton;
+        public System.Windows.Forms.Button Split1Draw1;
+        public System.Windows.Forms.Button SplitDraw2;
+        public System.Windows.Forms.Label PlayerPoint3;
+        public System.Windows.Forms.Button Split2Judge;
+        public System.Windows.Forms.Button Split1Judge;
+        public System.Windows.Forms.Label SplitPoint1;
+        public System.Windows.Forms.Label SplitPoint2;
     }
 }
 
