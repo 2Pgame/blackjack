@@ -40,9 +40,11 @@ namespace blackjack
             pictureBox0.ImageLocation = "image\\cajino.png";
             BetButton.ImageLocation = "image\\coin.png";
             BetButton.Parent = pictureBox0;
-            PlayerPoint.Parent = pictureBox0;
             DealerPoint.Parent = pictureBox0;
             PlayerPoint.Parent = pictureBox0;
+            PlayerPoint3.Parent = pictureBox0;
+            SplitPoint1.Parent = pictureBox0;
+            SplitPoint2.Parent = pictureBox0;
             rest.Parent = pictureBox0;
             coinlabel.Parent = pictureBox0;
             PlayerCard1.Parent = pictureBox0;
@@ -75,8 +77,12 @@ namespace blackjack
         List<Card> shuffle = new List<Card>();
         List<Card> list1 = new List<Card>();
         List<Card> list2 = new List<Card>();
+        List<Card> splitlist1 = new List<Card>();
+        List<Card> splitlist2 = new List<Card>();
         public List<PictureBox> pictureBoxP = new List<PictureBox>();
         public List<PictureBox> pictureBoxE = new List<PictureBox>();
+        public List<PictureBox> splitpictureBoxP1 = new List<PictureBox>();
+        public List<PictureBox> splitpictureBoxP2 = new List<PictureBox>();
         public int sum = 0;
         public int playerSum;
         public int enemySum;
@@ -84,9 +90,16 @@ namespace blackjack
         public int bet;
         public int insBet;
         public string doubledown;
+        public int splitBet;
+        public int splitCount1;
+        public int splitCount2;
+        public int splitNumber1 = 1;
+        public int splitNumber2 = 1;
+        public int splitPoint = 3;
 
 
         public float SumPointP;
+        public float SumPointP2;
         private float SumPointE;
         JsonSerializerOptions options = new JsonSerializerOptions
         {
@@ -134,53 +147,6 @@ namespace blackjack
         {
             MessageBox.Show("1.00", "バージョン情報");
         }
-        void CardCreate()
-        {
-            for (int i = 1; i < 14; i++)
-            {
-                cards.Add(new Card(CardSuit.Club, i, i, i, "image\\" + i + ".png"));
-            }
-            for (int i = 1; i < 14; i++)
-            {
-                cards.Add(new Card(CardSuit.Spade, i, i + 13, i, "image\\" + (i + 13) + ".png"));
-            }
-            for (int i = 1; i < 14; i++)
-            {
-                cards.Add(new Card(CardSuit.Heart, i, i + 26, i, "image\\" + (i + 26) + ".png"));
-            }
-            for (int i = 1; i < 14; i++)
-            {
-                cards.Add(new Card(CardSuit.Diamond, i, i + 39, i, "image\\" + (i + 39) + ".png"));
-            }
-            foreach (Card card in cards)
-            {
-                card.PointCount(card.Number);
-                //Console.WriteLine($"{card.Suit}{card.Number} {card.Id} {card.Point} {card.Address}");
-            }
-
-        }
-        Random random = new Random();
-        void CardShuffle()
-        {
-            for (int i = 51; i >= 0; i--)
-            {
-                int num = random.Next(0, i + 1);
-                shuffle.Add(new Card(cards[num].Suit, cards[num].Number, cards[num].Id, cards[num].Point, cards[num].Address));
-                cards.RemoveAt(num);
-            }
-            cards = shuffle;
-            foreach (var cardS in shuffle)
-            {
-                Console.WriteLine($"{cardS.Suit}{cardS.Number} {cardS.Id} {cardS.Point} {cardS.Address}");
-            }
-        }
-        void CardClear(List<Card> list1, List<Card> list2, List<Card> cards, List<Card> shuffle)
-        {
-            list1.Clear();
-            list2.Clear();
-            cards.Clear();
-            shuffle.Clear();
-        }
 
         private void GameEndClicked(object sender, EventArgs e)
         {
@@ -208,10 +174,15 @@ namespace blackjack
             player2.Play();
             BetButton1.Visible = true;
             Bet10Button.Visible = true;
+            surrender.Enabled = true;
             if (list2[0].Number == 1)
             {
                 insurance.Enabled = true;
                 insurance10.Enabled = true;
+            }
+            if (list1[0].Point == list1[1].Point && list1[0].Point >= 4)
+            {
+                split.Enabled = true;
             }
 
 
@@ -224,13 +195,17 @@ namespace blackjack
                 list1 = player1.CardDrowPlayer(list1, shuffle);
                 SumPointP = player1.CalcPlayer(list1);
                 CardDraw.Enabled = false;
+                surrender.Enabled = false;
+                doubleDown.Enabled = false;
             }
             else
             {
-            list1 = player1.CardDrowPlayer(list1, shuffle);
-            SumPointP = player1.CalcPlayer(list1);
-            player2.Play();
-            doubleDown.Enabled = false;
+                list1 = player1.CardDrowPlayer(list1, shuffle);
+                SumPointP = player1.CalcPlayer(list1);
+                player2.Play();
+                doubleDown.Enabled = false;
+                surrender.Enabled = false;
+                doubleDown.Enabled = false;
             }
         }
 
@@ -246,7 +221,8 @@ namespace blackjack
             Output.Enabled = true;
             insurance.Enabled = false;
             insurance10.Enabled = false;
-
+            surrender.Enabled = false;
+            doubleDown.Enabled = false;
         }
 
         private void Ticked(object sender, EventArgs e)
@@ -324,6 +300,11 @@ namespace blackjack
             insBet = 0;
             insurance10.Text = "insurance10";
             doubledown = null;
+            PlayerPoint3.Text = "";
+            PlayerPoint.Visible = true;
+            PlayerPoint3.Visible = true;
+            SplitPoint1.Visible = false;
+            SplitPoint2.Visible = false;
         }
 
 
@@ -496,6 +477,259 @@ namespace blackjack
                 MessageBox.Show("コインが足りません");
             }
         }
+
+        private void surrender_Click(object sender, EventArgs e)
+        {
+            coin += bet / 2;
+            coinlabel.Text = coin.ToString();
+            doubleDown.Enabled = false;
+            surrender.Enabled = false;
+            CardJudge.Enabled = false;
+            Initialization.Enabled = true;
+            CardDraw.Enabled = false;
+        }
+
+        private void split_Click(object sender, EventArgs e)
+        {
+            pictureBoxP[0].Image = null;
+            pictureBoxP[1].Image = null;
+            pictureBoxP[2].Image = null;
+            pictureBoxP[3].Image = null;
+            pictureBoxP[4].Image = null;
+            pictureBoxP[5].Image = null;
+
+            splitpictureBoxP1.Add(PlayerCard1);
+            splitpictureBoxP1.Add(PlayerCard2);
+            splitpictureBoxP1.Add(PlayerCard3);
+            splitpictureBoxP2.Add(PlayerCard4);
+            splitpictureBoxP2.Add(PlayerCard5);
+            splitpictureBoxP2.Add(PlayerCard6);
+            splitlist1.Add(new Card(cards[sum].Suit, cards[sum].Number, cards[sum].Id, cards[sum].Point, cards[sum].Address));
+            sum++;
+            splitlist2.Add(new Card(cards[sum].Suit, cards[sum].Number, cards[sum].Id, cards[sum].Point, cards[sum].Address));
+            splitlist1[0] = list1[0];
+            splitlist2[0] = list1[1];
+            splitpictureBoxP1[0].ImageLocation = splitlist1[0].Address;
+            splitpictureBoxP2[0].ImageLocation = splitlist2[0].Address;
+            splitBet = bet;
+            SplitBetButton.Text = splitBet.ToString();
+            split.Enabled = false;
+            CardJudge.Enabled = false;
+            Split1Draw1.Enabled = true;
+            CardDraw.Enabled = false;
+            doubleDown.Enabled = false;
+            PlayerPoint.Visible = false;
+            PlayerPoint3.Visible = false;
+            SplitPoint1.Visible = true;
+            SplitPoint2.Visible = true;
+            SplitPoint1.Text = splitlist1[0].Point.ToString();
+            SplitPoint2.Text = splitlist2[0].Point.ToString();
+        }
+
+        private void Split1Draw1_Click(object sender, EventArgs e)
+        {
+            if (splitlist1[0].Number == 1)
+            {
+                splitlist1 = player1.CardDrowPlayerSplit(splitlist1, shuffle);
+                SumPointP = player1.CalcPlayerFirstS(splitlist1);
+                SumPointP = 0;
+                for (int i = 0; i < 2; i++)
+                {
+                    SumPointP += splitlist1[i].Point;
+                }
+                if (SumPointP == 21)
+                {
+                    SumPointP += (float)0.5;
+                    PlayerPoint.Text = "Black\nJack";
+                }
+                if (SumPointP <= 21)
+                {
+                    SplitPoint1.Text = SumPointP.ToString();
+                }
+                else
+                {
+                    SplitPoint1.Text = "Burst";
+                }
+                Split1Judge.Enabled = true;
+                Split1Draw1.Enabled = false;
+            }
+            if (splitCount1 == 0 && splitlist1[0].Number != 1)
+            {
+                splitlist1 = player1.CardDrowPlayerSplit(splitlist1, shuffle);
+                SumPointP = player1.CalcPlayerFirstS(splitlist1);
+                SumPointP = 0;
+                for (int i = 0; i < 2; i++)
+                {
+                    SumPointP += splitlist1[i].Point;
+                }
+                if (SumPointP <= 21)
+                {
+                    SplitPoint1.Text = SumPointP.ToString();
+                }
+                else
+                {
+                    SplitPoint1.Text = "Burst";
+                }
+                splitCount1++;
+                Split1Judge.Enabled = true;
+            }
+            else if (splitCount1 == 1 && splitlist1[0].Number != 1)
+            {
+                splitlist1 = player1.CardDrowPlayerSplit(splitlist1, shuffle);
+                SumPointP = player1.CalcPlayerFirstS(splitlist1);
+                SumPointP = 0;
+                for (int i = 0; i < 3; i++)
+                {
+                    SumPointP += splitlist1[i].Point;
+                }
+                if (SumPointP <= 21)
+                {
+                    SplitPoint1.Text = SumPointP.ToString();
+                }
+                else
+                {
+                    SplitPoint1.Text = "Burst";
+                }
+                Split1Draw1.Enabled = false;
+                Split1Judge.Enabled = true;
+
+            }
+        }
+        private void Split1Draw2_Click(object sender, EventArgs e)
+        {
+            if (splitlist2[0].Number == 1)
+            {
+                splitlist2 = player1.CardDrowPlayerSplit2(splitlist2, shuffle);
+                SumPointP2 = player1.CalcPlayerFirstS(splitlist2);
+                SumPointP2 = 0;
+                for (int i = 0; i < splitlist2.Count; i++)
+                {
+                    SumPointP2 += splitlist2[i].Point;
+                }
+                if (SumPointP2 == 21)
+                {
+                    SumPointP2 += (float)0.5;
+                    SplitPoint2.Text = "Black\nJack";
+                }
+                if (SumPointP2 <= 21)
+                {
+                    SplitPoint2.Text = SumPointP2.ToString();
+                }
+                else
+                {
+                    SplitPoint2.Text = "Burst";
+                }
+                CardJudge.Enabled = true;
+                SplitDraw2.Enabled = false;
+
+            }
+            if (splitCount2 == 0 && splitlist2[0].Number != 1)
+            {
+                splitlist2 = player1.CardDrowPlayerSplit2(splitlist2, shuffle);
+                player1.CalcPlayer(splitlist2);
+                SumPointP2 = 0;
+                for (int i = 0; i < splitlist2.Count; i++)
+                {
+                    SumPointP2 += splitlist2[i].Point;
+                }
+                if (SumPointP2 <= 21)
+                {
+                    SplitPoint2.Text = SumPointP2.ToString();
+                }
+                splitCount2++;
+                Split2Judge.Enabled = true;
+            }
+            else if (splitCount2 == 1 && splitlist2[0].Number != 1)
+            {
+                splitlist2 = player1.CardDrowPlayerSplit2(splitlist2, shuffle);
+                SumPointP2 = player1.CalcPlayer(splitlist2);
+                SumPointP2 = 0;
+                for (int i = 0; i < splitlist2.Count; i++)
+                {
+                    SumPointP2 += splitlist2[i].Point;
+                }
+                if (SumPointP2 <= 21)
+                {
+                    SplitPoint2.Text = SumPointP2.ToString();
+                }
+                else if (SumPointP2 >21)
+                {
+                    SplitPoint2.Text = "Burst";
+                }
+                Split2Judge.Enabled = true;
+                SplitDraw2.Enabled = false;
+            }
+        }
+        private void Split2Judge_Click(object sender, EventArgs e)
+        {
+
+            Split2Judge.Enabled = false;
+            SumPointE = enemy.CardDrowEnemy(list2, shuffle);
+            Console.WriteLine($"{SumPointP},{SumPointE}");
+            enemy.BJJudge(SumPointP, SumPointE);
+            Initialization.Enabled = true;
+            Output.Enabled = true;
+            insurance.Enabled = false;
+            insurance10.Enabled = false;
+            surrender.Enabled = false;
+            doubleDown.Enabled = false;
+
+        }
+        private void Split1Judge_Click(object sender, EventArgs e)
+        {
+            Split1Draw1.Enabled = false;
+            SplitDraw2.Enabled = true;
+            Split1Judge.Enabled = false;
+        }
+        void CardCreate()
+        {
+            for (int i = 1; i < 14; i++)
+            {
+                cards.Add(new Card(CardSuit.Club, i, i, i, "image\\" + i + ".png"));
+            }
+            for (int i = 1; i < 14; i++)
+            {
+                cards.Add(new Card(CardSuit.Spade, i, i + 13, i, "image\\" + (i + 13) + ".png"));
+            }
+            for (int i = 1; i < 14; i++)
+            {
+                cards.Add(new Card(CardSuit.Heart, i, i + 26, i, "image\\" + (i + 26) + ".png"));
+            }
+            for (int i = 1; i < 14; i++)
+            {
+                cards.Add(new Card(CardSuit.Diamond, i, i + 39, i, "image\\" + (i + 39) + ".png"));
+            }
+            foreach (Card card in cards)
+            {
+                card.PointCount(card.Number);
+                //Console.WriteLine($"{card.Suit}{card.Number} {card.Id} {card.Point} {card.Address}");
+            }
+
+        }
+        Random random = new Random();
+        void CardShuffle()
+        {
+            for (int i = 51; i >= 0; i--)
+            {
+                int num = random.Next(0, i + 1);
+                shuffle.Add(new Card(cards[num].Suit, cards[num].Number, cards[num].Id, cards[num].Point, cards[num].Address));
+                cards.RemoveAt(num);
+            }
+            cards = shuffle;
+            foreach (var cardS in shuffle)
+            {
+                Console.WriteLine($"{cardS.Suit}{cardS.Number} {cardS.Id} {cardS.Point} {cardS.Address}");
+            }
+        }
+        void CardClear(List<Card> list1, List<Card> list2, List<Card> cards, List<Card> shuffle)
+        {
+            list1.Clear();
+            list2.Clear();
+            cards.Clear();
+            shuffle.Clear();
+        }
+
+
     }
     class NameCoins
     {

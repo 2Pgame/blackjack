@@ -111,19 +111,8 @@ namespace blackjack
                 SumPointP += card.Point;
             }
             Console.WriteLine($"現在の合計は{SumPointP}です");
+           
 
-            foreach (var card in list1)
-            {
-                SumPointP += card.Point;
-
-            }
-            AToChange(list1);
-
-            SumPointP = 0;
-            foreach (Card card in list1)
-            {
-                SumPointP += card.Point;
-            }
             if (SumPointP <= 20)
             {
                 Form1.PlayerPoint.Text = SumPointP.ToString();
@@ -144,6 +133,116 @@ namespace blackjack
             return SumPointP;
         }
         public void AToChange(List<Card> list1)
+        {
+            SumPointP = 0;
+            foreach (Card card in list1)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP >= 22)
+            {
+                foreach (var card in list1)
+                {
+                    if (card.Id == 1)
+                    {
+                        card.Point = 1;
+                    }
+                }
+            }
+            SumPointP = 0;
+            foreach (var card in list1)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP >= 22)
+            {
+                foreach (var card in list1)
+                {
+                    if (card.Id == 14)
+                    {
+                        card.Point = 1;
+                    }
+                }
+            }
+            SumPointP = 0;
+            foreach (var card in list1)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP >= 22)
+            {
+                foreach (var card in list1)
+                {
+                    if (card.Id == 27)
+                    {
+                        card.Point = 1;
+                    }
+                }
+            }
+            SumPointP = 0;
+            foreach (var card in list1)
+            {
+                SumPointP += card.Point;
+            }
+            if (SumPointP >= 22)
+            {
+                foreach (var card in list1)
+                {
+                    if (card.Id == 40)
+                    {
+                        card.Point = 1;
+                    }
+                }
+            }
+        }
+        public List<Card> CardDrowPlayerSplit(List<Card> player3, List<Card> shuffle)
+        {
+            player3.Add(new Card(shuffle[Form1.splitPoint].Suit, shuffle[Form1.splitPoint].Number, shuffle[Form1.splitPoint].Id, shuffle[Form1.splitPoint].Point, shuffle[Form1.splitPoint].Address));
+            Form1.splitpictureBoxP1[Form1.splitNumber1].ImageLocation = player3[Form1.splitNumber1].Address;
+            Form1.splitNumber1++;
+            Form1.splitPoint++;
+            Form1.sum++;
+            Form1.playerSum++;
+            SumPointP = 0;
+            foreach (var card in player3)
+            {
+                SumPointP += card.Point;
+
+            }
+            AToChangeS(player3);
+
+            return player3;
+        }
+        public List<Card> CardDrowPlayerSplit2(List<Card> player3, List<Card> shuffle)
+        {
+            player3.Add(new Card(shuffle[Form1.splitPoint].Suit, shuffle[Form1.splitPoint].Number, shuffle[Form1.splitPoint].Id, shuffle[Form1.splitPoint].Point, shuffle[Form1.splitPoint].Address));
+            Form1.splitpictureBoxP2[Form1.splitNumber2].ImageLocation = player3[Form1.splitNumber2].Address;
+            Form1.splitNumber2++;
+            Form1.splitPoint++;
+            Form1.sum++;
+            Form1.playerSum++;
+            SumPointP = 0;
+            foreach (var card in player3)
+            {
+                SumPointP += card.Point;
+
+            }
+            AToChange(player3);
+
+            return player3;
+        }
+        public float CalcPlayerFirstS(List<Card> list1)
+        {
+            SumPointP = 0;
+            for (int i = 0; i < list1.Count; i++)
+            {
+                SumPointP += list1[i].Point;
+            }
+
+            Console.WriteLine($"現在の合計は{SumPointP}です");
+            return SumPointP;
+        }
+        public void AToChangeS(List<Card> list1)
         {
             SumPointP = 0;
             foreach (Card card in list1)
