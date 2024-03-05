@@ -83,6 +83,7 @@ namespace blackjack
         public int coin = 10;
         public int bet;
         public int insBet;
+        public string doubledown;
 
 
         public float SumPointP;
@@ -218,7 +219,7 @@ namespace blackjack
 
         private void CardDraw_Click(object sender, EventArgs e)
         {
-            if (doubleDown.Enabled)
+            if (doubledown == "double")
             {
                 list1 = player1.CardDrowPlayer(list1, shuffle);
                 SumPointP = player1.CalcPlayer(list1);
@@ -322,6 +323,7 @@ namespace blackjack
             insurance.Text = "insurance1";
             insBet = 0;
             insurance10.Text = "insurance10";
+            doubledown = null;
         }
 
 
@@ -486,6 +488,7 @@ namespace blackjack
                 coinlabel.Text = coin.ToString();
                 BetButton1.Text = bet.ToString();
                 Bet10Button.Text = bet.ToString();
+                doubledown = "double";
             }
             else
             {
