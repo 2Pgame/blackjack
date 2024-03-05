@@ -489,6 +489,7 @@ namespace blackjack
                 BetButton1.Text = bet.ToString();
                 Bet10Button.Text = bet.ToString();
                 doubledown = "double";
+                doubleDown.Enabled = false;
             }
             else
             {

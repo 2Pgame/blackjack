@@ -237,36 +237,6 @@ namespace blackjack
                 Console.WriteLine(Form1.insBet * 3 + "を獲得しました。");
             }
 
-            if (sumPoint1 == 21.5)
-            {
-                if (Form1.bet >= 10)
-                {
-                    Console.WriteLine("プレイヤーの勝ち");
-                    Form1.CrownPictureP.Visible = true;
-                    Form1.WinOrLoseP.Visible = true;
-                    Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Red;
-                    Form1.WinOrLoseP.Text = "勝ち";
-                    Form1.WinOrLoseE.Visible = true;
-                    Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Blue;
-                    Form1.WinOrLoseE.Text = "負け";
-                    Form1.player.controls.pause();// ポーズ(play()で再開)
-                    if (Form1.bet >= 10)
-                    {
-                        SoundPlayer player1 = new SoundPlayer(@"ファンファーレ.wav");
-                        player1.Play();
-                        Form1.Start2();
-                    }
-                    else
-                    {
-                        SoundPlayer player1 = new SoundPlayer(@"勝ち.wav");
-                        player1.Play();
-                        Form1.Start();
-                    }
-
-                    Form1.coin += (int)(Form1.bet * 2.5);
-                    Form1.coinlabel.Text = Form1.coin.ToString();
-                }
-            }
             else if (sumPoint1 >= 22)
             {
                 Console.WriteLine("プレイヤーの負け");
@@ -342,9 +312,17 @@ namespace blackjack
                     player1.Play();
                     Form1.Start();
                 }
-
+                if (sumPoint1 == 21.5)
+                {
+                    Form1.coin += (int)(Form1.bet * 2.5);
+                    Form1.coinlabel.Text = Form1.coin.ToString();
+                }
+                else 
+                {
+                
                 Form1.coin += Form1.bet * 2;
                 Form1.coinlabel.Text = Form1.coin.ToString();
+                }
 
             }
             else if (sumPoint2 > sumPoint1)
