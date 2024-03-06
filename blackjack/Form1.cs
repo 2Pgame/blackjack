@@ -162,18 +162,18 @@ namespace blackjack
         {
             //list1 = player1.CardDistributePlayer(testBJ);
             //list2 = enemy.CardDistributeEnemy(testBJ);
-            list1 = player1.CardDistributePlayer(testSplit);
-            list2 = enemy.CardDistributeEnemy(testSplit);
-            //list1 = player1.CardDistributePlayer(shuffle);
-            //list2 = enemy.CardDistributeEnemy(shuffle);
+            //list1 = player1.CardDistributePlayer(testSplit);
+            //list2 = enemy.CardDistributeEnemy(testSplit);
+            list1 = player1.CardDistributePlayer(shuffle);
+            list2 = enemy.CardDistributeEnemy(shuffle);
             SumPointE = list2[0].Point;
             DealerPoint.Text = SumPointE.ToString() + "+ ??";
             //list1 = player1.CardDistributePlayer(testBJ);
             //list2 = enemy.CardDistributeEnemy(testBJ);
-            list1 = player1.CardDistributePlayer(testSplit);
-            list2 = enemy.CardDistributeEnemy(testSplit);
-            //list1 = player1.CardDistributePlayer(shuffle);
-            //list2 = enemy.CardDistributeEnemy(shuffle);
+            //list1 = player1.CardDistributePlayer(testSplit);
+            //list2 = enemy.CardDistributeEnemy(testSplit);
+            list1 = player1.CardDistributePlayer(shuffle);
+            list2 = enemy.CardDistributeEnemy(shuffle);
             pictureBoxE[enemySum - 1].ImageLocation = "image\\53.png";
             SumPointP = player1.CalcPlayerFirst(list1);
             if (SumPointP <= 20)
@@ -191,7 +191,10 @@ namespace blackjack
             {
                 insurance.Enabled = true;
                 insurance10.Enabled = true;
-                EvenMoney.Enabled = true;
+                if (SumPointP == 21.5)
+                {
+                    EvenMoney.Enabled = true;
+                }
             }
             if (list1[0].Point == list1[1].Point && list1[0].Point >= 4)
             {
@@ -229,6 +232,7 @@ namespace blackjack
             Initialization.Enabled = true;
             CardDraw.Enabled = false;
             CardJudge.Enabled = false;
+            EvenMoney.Enabled = false;
             Output.Enabled = true;
             insurance.Enabled = false;
             insurance10.Enabled = false;
@@ -516,6 +520,9 @@ namespace blackjack
             CardJudge.Enabled = false;
             Initialization.Enabled = true;
             CardDraw.Enabled = false;
+            WinOrLoseP.ForeColor = Color.Purple;
+            WinOrLoseP.Text = "サレンダー";
+            WinOrLoseP.Visible = true;
         }
 
         private void split_Click(object sender, EventArgs e)
@@ -796,9 +803,9 @@ namespace blackjack
         }
         void TestBJ(List<Card> cards)
         {
+            testBJ.Add(new Card(CardSuit.Club, 3, 3, 3, "image\\" + 3 + ".png"));
             testBJ.Add(new Card(CardSuit.Club, 1, 1, 11, "image\\" + 1 + ".png"));
-            testBJ.Add(new Card(CardSuit.Club, 1, 1, 11, "image\\" + 1 + ".png"));
-            testBJ.Add(new Card(CardSuit.Club, 10, 10, 10, "image\\" + 10 + ".png"));
+            testBJ.Add(new Card(CardSuit.Club, 4, 4, 4, "image\\" + 4 + ".png"));
             testBJ.Add(new Card(CardSuit.Club, 11, 11, 10, "image\\" + 11 + ".png"));
         }
         void TestSplitA(List<Card> cards)

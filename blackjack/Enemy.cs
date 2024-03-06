@@ -237,7 +237,7 @@ namespace blackjack
                 Console.WriteLine(Form1.insBet * 3 + "を獲得しました。");
             }
 
-            else if (sumPoint1 >= 22)
+            if (sumPoint1 >= 22)
             {
                 Console.WriteLine("プレイヤーの負け");
                 Form1.WinOrLoseP.Visible = true;
