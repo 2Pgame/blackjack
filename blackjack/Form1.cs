@@ -191,10 +191,8 @@ namespace blackjack
             {
                 insurance.Enabled = true;
                 insurance10.Enabled = true;
-                if (SumPointP == 21.5)
-                {
-                    EvenMoney.Enabled = true;
-                }
+
+                EvenMoney.Enabled = true;
             }
             if (list1[0].Point == list1[1].Point && list1[0].Point >= 4)
             {
@@ -795,6 +793,9 @@ namespace blackjack
         {
             coin += bet * 2;
             coinlabel.Text = coin.ToString();
+            WinOrLoseP.Visible = true;
+            WinOrLoseP.ForeColor = System.Drawing.Color.Purple;
+            WinOrLoseP.Text = "イーブン\nマネー";
             Initialization.Enabled = true;
             CardDraw.Enabled = false;
             CardJudge.Enabled = false;
