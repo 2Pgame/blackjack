@@ -430,7 +430,15 @@ namespace blackjack
         private void NameInput_Click(object sender, EventArgs e)
         {
             string str = Microsoft.VisualBasic.Interaction.InputBox("", "名前入力", "名前を入力してください", -1, -1);
-            label2.Text = str;
+            if (str == "")
+            {
+                label2.Text = label2.Text;
+            }
+            else
+            {
+                label2.Text = str;
+            }
+
         }
 
         private void insurance_Click(object sender, EventArgs e)
