@@ -111,8 +111,7 @@ namespace blackjack
                 SumPointP += card.Point;
             }
             Console.WriteLine($"現在の合計は{SumPointP}です");
-           
-
+          
             if (SumPointP <= 20)
             {
                 Form1.PlayerPoint.Text = SumPointP.ToString();
@@ -207,7 +206,7 @@ namespace blackjack
                 SumPointP += card.Point;
 
             }
-            AToChangeS(player3);
+            AToChange(player3);
 
             return player3;
         }

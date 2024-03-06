@@ -160,18 +160,18 @@ namespace blackjack
 
         private void ReleaseClicked(object sender, EventArgs e)
         {
-            list1 = player1.CardDistributePlayer(testBJ);
-            list2 = enemy.CardDistributeEnemy(testBJ);
-            //list1 = player1.CardDistributePlayer(testSplit);
-            //list2 = enemy.CardDistributeEnemy(testSplit);
+            //list1 = player1.CardDistributePlayer(testBJ);
+            //list2 = enemy.CardDistributeEnemy(testBJ);
+            list1 = player1.CardDistributePlayer(testSplit);
+            list2 = enemy.CardDistributeEnemy(testSplit);
             //list1 = player1.CardDistributePlayer(shuffle);
             //list2 = enemy.CardDistributeEnemy(shuffle);
             SumPointE = list2[0].Point;
             DealerPoint.Text = SumPointE.ToString() + "+ ??";
-            list1 = player1.CardDistributePlayer(testBJ);
-            list2 = enemy.CardDistributeEnemy(testBJ);
-            //list1 = player1.CardDistributePlayer(testSplit);
-            //list2 = enemy.CardDistributeEnemy(testSplit);
+            //list1 = player1.CardDistributePlayer(testBJ);
+            //list2 = enemy.CardDistributeEnemy(testBJ);
+            list1 = player1.CardDistributePlayer(testSplit);
+            list2 = enemy.CardDistributeEnemy(testSplit);
             //list1 = player1.CardDistributePlayer(shuffle);
             //list2 = enemy.CardDistributeEnemy(shuffle);
             pictureBoxE[enemySum - 1].ImageLocation = "image\\53.png";
@@ -209,6 +209,7 @@ namespace blackjack
                 CardDraw.Enabled = false;
                 surrender.Enabled = false;
                 doubleDown.Enabled = false;
+                CardJudge.Enabled = true;
             }
             else
             {
@@ -217,7 +218,6 @@ namespace blackjack
                 player2.Play();
                 doubleDown.Enabled = false;
                 surrender.Enabled = false;
-                doubleDown.Enabled = false;
             }
         }
 
@@ -368,14 +368,14 @@ namespace blackjack
             // オブジェクトからJSON文字列を作成（インデントフォーマットあり）
             string json = JsonSerializer.Serialize(nameCoins, options);
             // ファイルに出力
+
             File.WriteAllText("propaty.json", json);
+
         }
 
         private void Input_Click(object sender, EventArgs e)
         {
-            string json = File.ReadAllText("propaty.json");
-
-            NameCoins product = JsonSerializer.Deserialize<NameCoins>(json);
+            NameCoins product = JsonFile();
 
             coin = product.Coins;
             if (coin == 0)
@@ -499,6 +499,8 @@ namespace blackjack
                 Bet10Button.Text = bet.ToString();
                 doubledown = "double";
                 doubleDown.Enabled = false;
+                CardJudge.Enabled = false;
+
             }
             else
             {
@@ -809,6 +811,13 @@ namespace blackjack
             CardJudge.Enabled = false;
             surrender.Enabled = false;
 
+        }
+        private NameCoins JsonFile()
+        {
+            string json = File.ReadAllText("propaty.json");
+
+            NameCoins product = JsonSerializer.Deserialize<NameCoins>(json);
+            return product;
         }
     }
     class NameCoins
