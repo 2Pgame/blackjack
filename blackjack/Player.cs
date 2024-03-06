@@ -58,7 +58,6 @@ namespace blackjack
             }
             else
             {
-
             }
 
             return player2;
@@ -236,69 +235,6 @@ namespace blackjack
 
             Console.WriteLine($"現在の合計は{SumPointP}です");
             return SumPointP;
-        }
-        public void AToChangeS(List<Card> list1)
-        {
-            SumPointP = 0;
-            foreach (Card card in list1)
-            {
-                SumPointP += card.Point;
-            }
-            if (SumPointP >= 22)
-            {
-                foreach (var card in list1)
-                {
-                    if (card.Id == 1)
-                    {
-                        card.Point = 1;
-                    }
-                }
-            }
-            SumPointP = 0;
-            foreach (var card in list1)
-            {
-                SumPointP += card.Point;
-            }
-            if (SumPointP >= 22)
-            {
-                foreach (var card in list1)
-                {
-                    if (card.Id == 14)
-                    {
-                        card.Point = 1;
-                    }
-                }
-            }
-            SumPointP = 0;
-            foreach (var card in list1)
-            {
-                SumPointP += card.Point;
-            }
-            if (SumPointP >= 22)
-            {
-                foreach (var card in list1)
-                {
-                    if (card.Id == 27)
-                    {
-                        card.Point = 1;
-                    }
-                }
-            }
-            SumPointP = 0;
-            foreach (var card in list1)
-            {
-                SumPointP += card.Point;
-            }
-            if (SumPointP >= 22)
-            {
-                foreach (var card in list1)
-                {
-                    if (card.Id == 40)
-                    {
-                        card.Point = 1;
-                    }
-                }
-            }
         }
     }
 }

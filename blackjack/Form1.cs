@@ -191,7 +191,6 @@ namespace blackjack
             {
                 insurance.Enabled = true;
                 insurance10.Enabled = true;
-
                 EvenMoney.Enabled = true;
             }
             if (list1[0].Point == list1[1].Point && list1[0].Point >= 4)
@@ -733,6 +732,19 @@ namespace blackjack
             SplitDraw2.Enabled = true;
             Split1Judge.Enabled = false;
         }
+        private void EvenMoney_Click(object sender, EventArgs e)
+        {
+            coin += bet * 2;
+            coinlabel.Text = coin.ToString();
+            WinOrLoseP.Visible = true;
+            WinOrLoseP.ForeColor = System.Drawing.Color.Purple;
+            WinOrLoseP.Text = "イーブン\nマネー";
+            Initialization.Enabled = true;
+            CardDraw.Enabled = false;
+            CardJudge.Enabled = false;
+            surrender.Enabled = false;
+
+        }
         void CardCreate()
         {
             for (int i = 1; i < 14; i++)
@@ -797,20 +809,6 @@ namespace blackjack
             testSplit.Add(new Card(CardSuit.Club, 8, 8, 8, "image\\" + 8 + ".png"));
             testSplit.Add(new Card(CardSuit.Club, 10, 10, 10, "image\\" + 10 + ".png"));
             testSplit.Add(new Card(CardSuit.Club, 5, 5, 5, "image\\" + 5 + ".png"));
-        }
-
-        private void EvenMoney_Click(object sender, EventArgs e)
-        {
-            coin += bet * 2;
-            coinlabel.Text = coin.ToString();
-            WinOrLoseP.Visible = true;
-            WinOrLoseP.ForeColor = System.Drawing.Color.Purple;
-            WinOrLoseP.Text = "イーブン\nマネー";
-            Initialization.Enabled = true;
-            CardDraw.Enabled = false;
-            CardJudge.Enabled = false;
-            surrender.Enabled = false;
-
         }
         private NameCoins JsonFile()
         {
