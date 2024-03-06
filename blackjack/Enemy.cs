@@ -359,8 +359,30 @@ namespace blackjack
                 Form1.WinOrLoseE.Visible = true;
                 Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Red;
                 Form1.WinOrLoseE.Text = "勝ち";
-                Form1.coinlabel.Text = Form1.coin.ToString();
             }
+            else if (sumPoint1 >= 22 && sumPoint2 < sumPoint3)
+            {
+                Console.WriteLine("プレイヤーの負け");
+                Form1.WinOrLoseP.Visible = true;
+                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Blue;
+                Form1.WinOrLoseP.Text = "負け";
+                Form1.CrownPictureE.Visible = true;
+                Form1.WinOrLoseE.Visible = true;
+                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Red;
+                Form1.WinOrLoseE.Text = "勝ち";
+            }
+            else if (sumPoint1 < sumPoint3 && sumPoint2 >= 22)
+            {
+                Console.WriteLine("プレイヤーの負け");
+                Form1.WinOrLoseP.Visible = true;
+                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Blue;
+                Form1.WinOrLoseP.Text = "負け";
+                Form1.CrownPictureE.Visible = true;
+                Form1.WinOrLoseE.Visible = true;
+                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Red;
+                Form1.WinOrLoseE.Text = "勝ち";
+            }
+
             else if (sumPoint3 >= 22)
             {
                 Console.WriteLine("プレイヤーの勝ち");
@@ -389,7 +411,20 @@ namespace blackjack
 
 
             }
-            else if (sumPoint1 == sumPoint3 && sumPoint2 == sumPoint3)
+            else if ((sumPoint1 == sumPoint3 && sumPoint1 <= 22) && (sumPoint2 == sumPoint3&& sumPoint2 <=22))
+            {
+                Console.WriteLine("引き分け");
+                Form1.WinOrLoseP.Visible = true;
+                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Purple;
+                Form1.WinOrLoseP.Text = "引き分け";
+                Form1.WinOrLoseE.Visible = true;
+                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Purple;
+                Form1.WinOrLoseE.Text = "引き分け";
+                Form1.coin += Form1.bet;
+                Form1.coin += Form1.bet;
+                Form1.coinlabel.Text = Form1.coin.ToString();
+            }
+            else if ((sumPoint1 > sumPoint3 && sumPoint1 >= 22 )  && sumPoint2 == sumPoint3)
             {
                 Console.WriteLine("引き分け");
                 Form1.WinOrLoseP.Visible = true;
@@ -401,7 +436,43 @@ namespace blackjack
                 Form1.coin += Form1.bet;
                 Form1.coinlabel.Text = Form1.coin.ToString();
             }
-            else if (sumPoint1 > sumPoint3 || sumPoint2 > sumPoint3)
+            else if (sumPoint1 == sumPoint3&& (sumPoint2 > sumPoint3 && sumPoint2 >= 22))
+            {
+                Console.WriteLine("引き分け");
+                Form1.WinOrLoseP.Visible = true;
+                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Purple;
+                Form1.WinOrLoseP.Text = "引き分け";
+                Form1.WinOrLoseE.Visible = true;
+                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Purple;
+                Form1.WinOrLoseE.Text = "引き分け";
+                Form1.coin += Form1.bet;
+                Form1.coinlabel.Text = Form1.coin.ToString();
+            }
+            else if (sumPoint1 < sumPoint3 && sumPoint2 == sumPoint3)
+            {
+                Console.WriteLine("引き分け");
+                Form1.WinOrLoseP.Visible = true;
+                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Purple;
+                Form1.WinOrLoseP.Text = "引き分け";
+                Form1.WinOrLoseE.Visible = true;
+                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Purple;
+                Form1.WinOrLoseE.Text = "引き分け";
+                Form1.coin += Form1.bet;
+                Form1.coinlabel.Text = Form1.coin.ToString();
+            }
+            else if (sumPoint1 == sumPoint3 && sumPoint2 < sumPoint3)
+            {
+                Console.WriteLine("引き分け");
+                Form1.WinOrLoseP.Visible = true;
+                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Purple;
+                Form1.WinOrLoseP.Text = "引き分け";
+                Form1.WinOrLoseE.Visible = true;
+                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Purple;
+                Form1.WinOrLoseE.Text = "引き分け";
+                Form1.coin += Form1.bet;
+                Form1.coinlabel.Text = Form1.coin.ToString();
+            }
+            else if ((sumPoint1 > sumPoint3 && sumPoint1 <= 21.5) && (sumPoint2 > sumPoint3 && sumPoint2 <= 21.5))
             {
                 Console.WriteLine("プレイヤーの勝ち");
                 Form1.CrownPictureP.Visible = true;
@@ -424,7 +495,52 @@ namespace blackjack
                     player1.Play();
                     Form1.Start();
                 }
-                if (sumPoint1 == 21.5 || sumPoint2 ==21.5)
+                if (sumPoint1 == 21.5 && sumPoint2 == 21.5)
+                {
+                    Form1.coin += (int)(Form1.bet * 2.5);
+                    Form1.coinlabel.Text = Form1.coin.ToString();
+                }
+                else if (sumPoint1 == 21.5 && sumPoint2 > sumPoint3)
+                {
+                    Form1.coin += (int)(Form1.bet * 2.5);
+                    Form1.coin += (int)(Form1.bet * 2);
+                    Form1.coinlabel.Text = Form1.coin.ToString();
+                }
+                else if (sumPoint1 > sumPoint3 && sumPoint2 == 21.5)
+                {
+                    Form1.coin += (int)(Form1.bet * 2.5);
+                    Form1.coin += (int)(Form1.bet * 2);
+                    Form1.coinlabel.Text = Form1.coin.ToString();
+                }
+
+            }
+
+
+
+            else if (sumPoint1 > sumPoint3 && sumPoint1<=21.5|| sumPoint2 > sumPoint3 && sumPoint2 <= 21.5)
+            {
+                Console.WriteLine("プレイヤーの勝ち");
+                Form1.CrownPictureP.Visible = true;
+                Form1.WinOrLoseP.Visible = true;
+                Form1.WinOrLoseP.ForeColor = System.Drawing.Color.Red;
+                Form1.WinOrLoseP.Text = "勝ち";
+                Form1.WinOrLoseE.Visible = true;
+                Form1.WinOrLoseE.ForeColor = System.Drawing.Color.Blue;
+                Form1.WinOrLoseE.Text = "負け";
+                Form1.player.controls.pause();// ポーズ(play()で再開)
+                if (Form1.bet >= 10)
+                {
+                    SoundPlayer player1 = new SoundPlayer(@"ファンファーレ.wav");
+                    player1.Play();
+                    Form1.Start2();
+                }
+                else
+                {
+                    SoundPlayer player1 = new SoundPlayer(@"勝ち.wav");
+                    player1.Play();
+                    Form1.Start();
+                }
+                if (sumPoint1 == 21.5 || sumPoint2 == 21.5)
                 {
                     Form1.coin += (int)(Form1.bet * 2.5);
                     Form1.coinlabel.Text = Form1.coin.ToString();

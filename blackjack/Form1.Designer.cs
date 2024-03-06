@@ -84,6 +84,7 @@
             this.Split1Judge = new System.Windows.Forms.Button();
             this.SplitPoint1 = new System.Windows.Forms.Label();
             this.SplitPoint2 = new System.Windows.Forms.Label();
+            this.EvenMoney = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BetButton)).BeginInit();
@@ -113,7 +114,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1898, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1898, 36);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -125,7 +126,7 @@
             this.CardRelease,
             this.ゲーム終了ToolStripMenuItem});
             this.ゲームToolStripMenuItem.Name = "ゲームToolStripMenuItem";
-            this.ゲームToolStripMenuItem.Size = new System.Drawing.Size(68, 29);
+            this.ゲームToolStripMenuItem.Size = new System.Drawing.Size(68, 32);
             this.ゲームToolStripMenuItem.Text = "ゲーム";
             // 
             // NewGame
@@ -163,7 +164,7 @@
             this.ヘルプToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.version});
             this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
-            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(72, 29);
+            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(72, 32);
             this.ヘルプToolStripMenuItem.Text = "ヘルプ";
             // 
             // version
@@ -485,7 +486,7 @@
             this.Output.AutoSize = true;
             this.Output.Enabled = false;
             this.Output.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Output.Location = new System.Drawing.Point(1033, 622);
+            this.Output.Location = new System.Drawing.Point(1163, 623);
             this.Output.Name = "Output";
             this.Output.Size = new System.Drawing.Size(128, 28);
             this.Output.TabIndex = 33;
@@ -497,7 +498,7 @@
             // 
             this.Input.AutoSize = true;
             this.Input.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Input.Location = new System.Drawing.Point(1182, 622);
+            this.Input.Location = new System.Drawing.Point(1303, 623);
             this.Input.Name = "Input";
             this.Input.Size = new System.Drawing.Size(128, 28);
             this.Input.TabIndex = 34;
@@ -520,7 +521,7 @@
             // 
             this.NameInput.AutoSize = true;
             this.NameInput.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.NameInput.Location = new System.Drawing.Point(910, 622);
+            this.NameInput.Location = new System.Drawing.Point(1049, 622);
             this.NameInput.Name = "NameInput";
             this.NameInput.Size = new System.Drawing.Size(102, 30);
             this.NameInput.TabIndex = 36;
@@ -597,7 +598,8 @@
             // 
             this.SplitBetButton.AutoSize = true;
             this.SplitBetButton.Enabled = false;
-            this.SplitBetButton.Location = new System.Drawing.Point(984, 534);
+            this.SplitBetButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SplitBetButton.Location = new System.Drawing.Point(974, 526);
             this.SplitBetButton.Name = "SplitBetButton";
             this.SplitBetButton.Size = new System.Drawing.Size(112, 28);
             this.SplitBetButton.TabIndex = 42;
@@ -692,12 +694,26 @@
             this.SplitPoint2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SplitPoint2.Visible = false;
             // 
+            // EvenMoney
+            // 
+            this.EvenMoney.AutoSize = true;
+            this.EvenMoney.Enabled = false;
+            this.EvenMoney.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.EvenMoney.Location = new System.Drawing.Point(907, 623);
+            this.EvenMoney.Name = "EvenMoney";
+            this.EvenMoney.Size = new System.Drawing.Size(130, 30);
+            this.EvenMoney.TabIndex = 50;
+            this.EvenMoney.Text = "イーブンマネー";
+            this.EvenMoney.UseVisualStyleBackColor = true;
+            this.EvenMoney.Click += new System.EventHandler(this.EvenMoney_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
+            this.Controls.Add(this.EvenMoney);
             this.Controls.Add(this.SplitPoint2);
             this.Controls.Add(this.SplitPoint1);
             this.Controls.Add(this.Split2Judge);
@@ -830,6 +846,7 @@
         public System.Windows.Forms.Button Split1Judge;
         public System.Windows.Forms.Label SplitPoint1;
         public System.Windows.Forms.Label SplitPoint2;
+        public System.Windows.Forms.Button EvenMoney;
     }
 }
 

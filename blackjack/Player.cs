@@ -201,8 +201,6 @@ namespace blackjack
             Form1.splitpictureBoxP1[Form1.splitNumber1].ImageLocation = player3[Form1.splitNumber1].Address;
             Form1.splitNumber1++;
             Form1.splitPoint++;
-            Form1.sum++;
-            Form1.playerSum++;
             SumPointP = 0;
             foreach (var card in player3)
             {
@@ -219,8 +217,6 @@ namespace blackjack
             Form1.splitpictureBoxP2[Form1.splitNumber2].ImageLocation = player3[Form1.splitNumber2].Address;
             Form1.splitNumber2++;
             Form1.splitPoint++;
-            Form1.sum++;
-            Form1.playerSum++;
             SumPointP = 0;
             foreach (var card in player3)
             {
